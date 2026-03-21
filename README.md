@@ -11,6 +11,23 @@ Syntax highlighting for grandMA2 command scripts in VS Code.
 - **Comment support** — Line comments starting with `#` are supported
 - **Operator highlighting** — Mathematical and logical operators are highlighted
 - **Case-insensitive keyword matching** — Keywords work regardless of case
+- **Hover documentation** — Hover over keywords to see detailed documentation including syntax, examples, and links to official docs
+
+## Hover Documentation
+
+When hovering over a grandMA2 keyword, a tooltip displays:
+- **Keyword name and category** — Identifies the keyword type (function, object, or helping)
+- **Description** — Detailed explanation from official MA Lighting documentation
+- **Syntax pattern** — Shows how the keyword is used in commands
+- **Usage examples** — Practical examples demonstrating the keyword in context
+- **Link to official documentation** — Direct link to MA Lighting help resources
+
+Currently covers **55+ keywords** across all categories:
+- 29 function keywords
+- 16 object keywords
+- 10 helping keywords
+
+Based on grandMA2 v3.9 documentation.
 
 ## Supported Keyword Categories
 

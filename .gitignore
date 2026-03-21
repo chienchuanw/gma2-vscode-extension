@@ -4,3 +4,7 @@
 .sisyphus/
 openspec/
 openspec/*
+node_modules/
+node_modules/*
+dist/
+*.vsix

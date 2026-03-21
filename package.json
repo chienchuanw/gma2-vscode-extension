@@ -4,9 +4,13 @@
   "description": "Syntax highlighting for grandMA2 lighting console commands (.gma2 files)",
   "version": "0.0.1",
   "publisher": "your-publisher-id",
+  "main": "./dist/extension.js",
   "engines": {
     "vscode": "^1.75.0"
   },
+  "activationEvents": [
+    "onLanguage:gma2"
+  ],
   "categories": [
     "Programming Languages"
   ],
@@ -44,5 +48,15 @@
         "path": "./syntaxes/gma2.tmLanguage.json"
       }
     ]
+  },
+  "scripts": {
+    "compile": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --sourcemap",
+    "watch": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --sourcemap --watch",
+    "package": "pnpm run compile && vsce package --no-dependencies"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.110.0",
+    "esbuild": "^0.27.4",
+    "typescript": "^5.9.3"
   }
 }

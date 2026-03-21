@@ -8,3 +8,6 @@ node_modules/
 examples/
 *.md
 !README.md
+src/
+tsconfig.json
+dist/**/*.map
