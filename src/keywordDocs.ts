@@ -2165,15 +2165,23 @@ const helpingKeywordDocs: KeywordDoc[] = [
     examples: ["Toggle Executor 1", "Assign Toggle Executor 2.1"],
     docUrl: keywordDocUrl("toggle"),
   },
-  {
-    name: "Up",
-    category: "helping",
-    description:
-      "Increases the attribute value by one step or moves up in a selection.",
-    syntax: "[object] Up",
-    examples: ["Channel 1 At Up", "Executor 1 Up"],
-    docUrl: keywordDocUrl("up"),
-  },
+   {
+     name: "Up",
+     category: "helping",
+     description:
+       "Increases the attribute value by one step or moves up in a selection.",
+     syntax: "[object] Up",
+     examples: ["Channel 1 At Up", "Executor 1 Up"],
+     docUrl: keywordDocUrl("up"),
+   },
+   {
+     name: "WebRemoteProgOnly",
+     category: "helping",
+     description: "Restricts web remote access to programmer-only mode, limiting remote control capabilities.",
+     syntax: "WebRemoteProgOnly",
+     examples: ["WebRemoteProgOnly"],
+     docUrl: keywordDocUrl("webremoteprogonly"),
+   },
 ];
 
 export const keywordDocs = new Map<string, KeywordDoc>(
