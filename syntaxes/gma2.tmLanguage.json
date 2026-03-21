@@ -84,6 +84,14 @@
         {
           "name": "keyword.control.function.gma2",
           "match": "(?i)\\b(SwopOn|SyncEffects|TakeControl|Toggle|Unblock|Unlock|Unpark|Update|UpdateFirmware|UpdateSoftware|UpdateThumbnails)\\b"
+        },
+        {
+          "name": "keyword.control.function.gma2",
+          "match": "(?i)\\b(AlignFaderModules|BlackScreen|ChannelLink|Chat|CrashLogCopy|CrashLogDelete|CrashLogList|Exit|ListEffectLibrary|ListFaderModules|ListLibrary|ListMacroLibrary)\\b"
+        },
+        {
+          "name": "keyword.control.function.gma2",
+          "match": "(?i)\\b(ListOops|ListOwner|ListPluginLibrary|ListShows|ListUpdate|ListUserVar|ListVar|NetworkInfo|NetworkNodeInfo|NetworkNodeUpdate|NetworkSpeedTest|Tools)\\b"
         }
       ]
     },
