@@ -1,0 +1,179 @@
+{
+  "scopeName": "source.gma2",
+  "name": "grandMA2",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#variables" },
+    { "include": "#function-keywords" },
+    { "include": "#object-keywords" },
+    { "include": "#helping-keywords" },
+    { "include": "#numbers" },
+    { "include": "#operators" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.hash.gma2",
+          "begin": "#",
+          "beginCaptures": {
+            "0": { "name": "punctuation.definition.comment.gma2" }
+          },
+          "end": "$"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.gma2",
+          "begin": "\"",
+          "beginCaptures": {
+            "0": { "name": "punctuation.definition.string.begin.gma2" }
+          },
+          "end": "\"",
+          "endCaptures": {
+            "0": { "name": "punctuation.definition.string.end.gma2" }
+          }
+        }
+      ]
+    },
+    "variables": {
+      "patterns": [
+        {
+          "name": "variable.other.gma2",
+          "match": "\\$[A-Za-z_][A-Za-z0-9_]*"
+        }
+      ]
+    },
+    "function-keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.function.gma2",
+          "match": "(?i)\\b(Assign|Align|Black|Blackout|Blind|BlindEdit|Block|Call|ChangeDest|CircularCopy|Clear|ClearActive)\\b"
+        },
+        {
+          "name": "keyword.control.function.gma2",
+          "match": "(?i)\\b(ClearAll|ClearSelection|Clone|Copy|Cut|Delete|DeleteShow|DisconnectStation|DropControl|Edit|EndSession|Export)\\b"
+        },
+        {
+          "name": "keyword.control.function.gma2",
+          "match": "(?i)\\b(Extract|Fix|Flash|FlashGo|FlashOn|Flip|Freeze|Go|GoBack|Goto|Help|Highlight)\\b"
+        },
+        {
+          "name": "keyword.control.function.gma2",
+          "match": "(?i)\\b(If|IfActive|IfOutput|IfProg|Import|Info|Insert|Invert|InviteStation|JoinSession|Kill|Label)\\b"
+        },
+        {
+          "name": "keyword.control.function.gma2",
+          "match": "(?i)\\b(Learn|LeaveSession|List|Load|LoadNext|LoadPrev|LoadShow|Locate|Lock|Login|Logout|ManualXFade)\\b"
+        },
+        {
+          "name": "keyword.control.function.gma2",
+          "match": "(?i)\\b(Move|Move3D|NewShow|Off|On|Oops|Park|Paste|Pause|Preview|PreviewEdit|Record)\\b"
+        },
+        {
+          "name": "keyword.control.function.gma2",
+          "match": "(?i)\\b(Reboot|Release|ReloadPlugins|Remote|RemoteCommand|Remove|RemoveIndividuals|Replace|ResetDmxSelection|ResetGuid|Restart|Rotate3D)\\b"
+        },
+        {
+          "name": "keyword.control.function.gma2",
+          "match": "(?i)\\b(SaveShow|Search|Select|SelectDrive|Setup|Shutdown|Solo|Stomp|Store|StoreLook|Swop|SwopGo)\\b"
+        },
+        {
+          "name": "keyword.control.function.gma2",
+          "match": "(?i)\\b(SwopOn|SyncEffects|TakeControl|Toggle|Unblock|Unlock|Unpark|Update|UpdateFirmware|UpdateSoftware|UpdateThumbnails)\\b"
+        }
+      ]
+    },
+    "object-keywords": {
+      "patterns": [
+        {
+          "name": "entity.name.type.object.gma2",
+          "match": "(?i)\\b(Agenda|Appearance|Attribute|AutoCreate|Backup|ButtonPage|Camera|Channel|ChannelFader|ChannelPage|Crossfade|CrossfadeA|CrossfadeB)\\b"
+        },
+        {
+          "name": "entity.name.type.object.gma2",
+          "match": "(?i)\\b(Cue|Delay|Dmx|DmxUniverse|Effect|EffectAttack|EffectBPM|EffectDecay|EffectDelay|EffectFade|EffectForm|EffectHigh)\\b"
+        },
+        {
+          "name": "entity.name.type.object.gma2",
+          "match": "(?i)\\b(EffectHZ|EffectID|EffectLow|EffectPhase|EffectSec|EffectSpeedGroup|EffectWidth|Executor|ExecButton1|ExecButton2|ExecButton3|Fade)\\b"
+        },
+        {
+          "name": "entity.name.type.object.gma2",
+          "match": "(?i)\\b(FadePath|Fader|FaderPage|Feature|Filter|Fixture|FixtureType|Form|Gel|Group|Image|Item3D)\\b"
+        },
+        {
+          "name": "entity.name.type.object.gma2",
+          "match": "(?i)\\b(Layer|Layout|Lua|Macro|Mask|Master|MasterFade|MAtricks|MAtricksBlocks|MAtricksFilter|MAtricksGroups|MAtricksInterleave)\\b"
+        },
+        {
+          "name": "entity.name.type.object.gma2",
+          "match": "(?i)\\b(MAtricksReset|MAtricksWings|MediaServer|Menu|Message|Messages|MidiControl|MidiNote|MidiProgram|Model|OutDelay|OutFade)\\b"
+        },
+        {
+          "name": "entity.name.type.object.gma2",
+          "match": "(?i)\\b(Page|Part|Plugin|PMArea|Preset|PresetType|PreviewExecutor|Profile|Protocol|PSR|PSRList|PSRPrepare)\\b"
+        },
+        {
+          "name": "entity.name.type.object.gma2",
+          "match": "(?i)\\b(Rate|Rate1|RdmAutomatch|RdmAutopatch|RdmFixtureType|RdmInfo|RdmList|RdmSetParameter|RdmSetpatch|RdmUnmatch|Root|Screen)\\b"
+        },
+        {
+          "name": "entity.name.type.object.gma2",
+          "match": "(?i)\\b(SearchResult|Selection|SelFix|Sequence|SetHostname|SetIP|SetNetworkSpeed|SpecialMaster|Speed|StepFade|StepInFade|StepOutFade)\\b"
+        },
+        {
+          "name": "entity.name.type.object.gma2",
+          "match": "(?i)\\b(Surface|Telnet|Temp|TempFader|Timecode|TimecodeSlot|Timer|User|UserProfile|Value|Version|View|ViewButton|ViewPage|World)\\b"
+        }
+      ]
+    },
+    "helping-keywords": {
+      "patterns": [
+        {
+          "name": "keyword.other.helping.gma2",
+          "match": "(?i)\\b(AddUserVar|AddVar|Alert|All|AllButtonExecutors|AllChaseExecutors|AllFaderExecutors|AllRows|AllSequExecutors|And|At|CmdDelay)\\b"
+        },
+        {
+          "name": "keyword.other.helping.gma2",
+          "match": "(?i)\\b(CmdHelp|Default|DefGoBack|DefGoForward|DefGoPause|DoubleRate|DoubleSpeed|Empty|EndIf|Escape|Full|FullHighlight)\\b"
+        },
+        {
+          "name": "keyword.other.helping.gma2",
+          "match": "(?i)\\b(HalfRate|HalfSpeed|IdentifyFaderModule|Interleave|Next|NextRow|Normal|Or|Please|Previous|PrevRow|SetUserVar)\\b"
+        },
+        {
+          "name": "keyword.other.helping.gma2",
+          "match": "(?i)\\b(SetVar|ShuffleSelection|ShuffleValues|SnapPercent|Thru|ToFull|ToZero|Top|Up|Down|WebRemoteProgOnly|With|Zero)\\b"
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.float.gma2",
+          "match": "\\b\\d+\\.\\d+\\b"
+        },
+        {
+          "name": "constant.numeric.integer.gma2",
+          "match": "\\b\\d+\\b"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.gma2",
+          "match": "[+\\-*/;@]"
+        },
+        {
+          "name": "keyword.operator.dot.gma2",
+          "match": "(?<!\\d)\\.(?!\\d)"
+        }
+      ]
+    }
+  }
+}

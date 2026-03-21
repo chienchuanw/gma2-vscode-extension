@@ -1,0 +1,48 @@
+{
+  "name": "gma2-language",
+  "displayName": "grandMA2 Language Support",
+  "description": "Syntax highlighting for grandMA2 lighting console commands (.gma2 files)",
+  "version": "0.0.1",
+  "publisher": "your-publisher-id",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "keywords": [
+    "grandMA2",
+    "gma2",
+    "lighting",
+    "syntax",
+    "highlight",
+    "MA Lighting"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/gma2-vscode-extension"
+  },
+  "contributes": {
+    "languages": [
+      {
+        "id": "gma2",
+        "aliases": [
+          "grandMA2",
+          "gma2",
+          "GMA2"
+        ],
+        "extensions": [
+          ".gma2"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "gma2",
+        "scopeName": "source.gma2",
+        "path": "./syntaxes/gma2.tmLanguage.json"
+      }
+    ]
+  }
+}

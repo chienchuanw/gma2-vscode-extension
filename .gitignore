@@ -1,4 +1,6 @@
 .claude/
 .codex/
 .opencode/
-
+.sisyphus/
+openspec/
+openspec/*

@@ -1,0 +1,10 @@
+.git/
+.opencode/
+.claude/
+.codex/
+.sisyphus/
+openspec/
+node_modules/
+examples/
+*.md
+!README.md
