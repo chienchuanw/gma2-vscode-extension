@@ -39,6 +39,11 @@ Channel 1 At 50
 Delete Group 4 Please
 If $showMode And Fixture 1
 
+# ---- Newly Added Keywords ----
+Chat "Hello from macro"
+ListShows
+NetworkInfo
+
 # ---- Variables ----
 SetVar $myVariable = 100
 SetVar $scene_name = "Opening"

@@ -22,23 +22,23 @@ When hovering over a grandMA2 keyword, a tooltip displays:
 - **Usage examples** — Practical examples demonstrating the keyword in context
 - **Link to official documentation** — Direct link to MA Lighting help resources
 
-Currently covers **55+ keywords** across all categories:
-- 29 function keywords
-- 16 object keywords
-- 10 helping keywords
+Currently covers **304 keywords** across all categories:
+- 172 function keywords
+- 96 object keywords
+- 36 helping keywords
 
-Based on grandMA2 v3.9 documentation.
+Based on grandMA2 v3.9.61.3 documentation.
 
 ## Supported Keyword Categories
 
 ### Function Keywords
-Store, Copy, Delete, Go, Goto, Assign, Update, Move, Clear, ClearAll, Select, Off, On, Edit, Label, Park, Unpark, and 90+ more
+Store, Copy, Delete, Go, Goto, Assign, Update, Move, Clear, ClearAll, Select, Off, On, Edit, Label, Park, Unpark, and 155 more
 
 ### Object Keywords
-Cue, Sequence, Fixture, Group, Executor, Effect, Macro, Preset, Page, Channel, and 114+ more
+Cue, Sequence, Fixture, Group, Executor, Effect, Macro, Preset, Page, Channel, and 86 more
 
 ### Helping Keywords
-Thru, At, Please, And, Or, If, Not, Then, Else, With, and 44+ more
+Thru, At, Please, And, Or, If, Not, Then, Else, With, and 26 more
 
 ## Usage
 
