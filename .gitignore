@@ -7,4 +7,7 @@ openspec/*
 node_modules/
 node_modules/*
 dist/
+out/
+.vscode-test/
+coverage/
 *.vsix

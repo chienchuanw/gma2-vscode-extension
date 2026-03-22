@@ -6,8 +6,16 @@
 openspec/
 node_modules/
 examples/
+test/
+out/
+.vscode-test/
+coverage/
+.github/
 *.md
 !README.md
 src/
 tsconfig.json
+tsconfig.test.json
+vitest.config.ts
+.vscode-test.mjs
 dist/**/*.map
