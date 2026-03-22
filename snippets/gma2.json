@@ -1,0 +1,92 @@
+{
+  "Store Cue": {
+    "prefix": "storecue",
+    "body": [
+      "Store Cue ${1:number} \"${2:name}\""
+    ],
+    "description": "Store a cue with a name label"
+  },
+  "Select Fixture Thru": {
+    "prefix": "selthru",
+    "body": [
+      "Select Fixture ${1:first} Thru ${2:last}"
+    ],
+    "description": "Select a range of fixtures"
+  },
+  "If EndIf Block": {
+    "prefix": "ifendif",
+    "body": [
+      "If \\$${1:variable}",
+      "\t${2:command}",
+      "EndIf"
+    ],
+    "description": "Conditional block with If and EndIf"
+  },
+  "Set Variable": {
+    "prefix": "setvar",
+    "body": [
+      "SetVar \\$${1:name} = ${2:value}"
+    ],
+    "description": "Set a global variable value"
+  },
+  "Assign Sequence to Executor": {
+    "prefix": "assignexec",
+    "body": [
+      "Assign Sequence ${1:seq} At Executor ${2:exec}"
+    ],
+    "description": "Assign a sequence to an executor for playback"
+  },
+  "Macro Section Header": {
+    "prefix": "section",
+    "body": [
+      "# ---- ${1:Section Name} ----",
+      "${0}"
+    ],
+    "description": "Insert a comment section header for script organization"
+  },
+  "Cue List": {
+    "prefix": "cuelist",
+    "body": [
+      "Store Cue ${1:1} \"${2:First Look}\"",
+      "Store Cue ${3:2} \"${4:Second Look}\"",
+      "Store Cue ${5:3} \"${6:Third Look}\"",
+      "Go"
+    ],
+    "description": "Scaffold a sequence of cues with Go"
+  },
+  "Fixture At Value": {
+    "prefix": "fixat",
+    "body": [
+      "Fixture ${1:number} At ${2:value}"
+    ],
+    "description": "Set a fixture to a specific intensity value"
+  },
+  "Copy Object": {
+    "prefix": "copyat",
+    "body": [
+      "Copy ${1:Sequence} ${2:source} At ${3:Sequence} ${4:target}"
+    ],
+    "description": "Copy an object to a new location"
+  },
+  "Label Object": {
+    "prefix": "labelobj",
+    "body": [
+      "Label ${1:Cue} ${2:number} \"${3:name}\""
+    ],
+    "description": "Assign a label to a show object"
+  },
+  "Goto Cue": {
+    "prefix": "gotocue",
+    "body": [
+      "Goto Cue ${1:number}"
+    ],
+    "description": "Jump directly to a specific cue"
+  },
+  "Effect Assignment": {
+    "prefix": "effectassign",
+    "body": [
+      "Assign Effect ${1:number} At Executor ${2:exec}"
+    ],
+    "description": "Assign an effect to an executor"
+  }
+}

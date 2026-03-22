@@ -56,6 +56,12 @@
         "scopeName": "source.gma2",
         "path": "./syntaxes/gma2.tmLanguage.json"
       }
+    ],
+    "snippets": [
+      {
+        "language": "gma2",
+        "path": "./snippets/gma2.json"
+      }
     ]
   },
   "scripts": {
