@@ -1,0 +1,19 @@
+# ---- Pre-Show Programming ----
+Store Cue 1 "House Open"
+Store Cue 2 "Pre-Set"
+Store Cue 3 "Downstage Wash"
+
+# ---- Fixture Selection ----
+Select Fixture 1 Thru 10
+Fixture 11 At 75
+Channel 1 Thru 4 At Full
+
+# ---- Variables ----
+SetVar $sceneIndex = 1
+Goto Cue $sceneIndex
+
+# ---- Executor Assignment ----
+Assign Sequence 1 At Executor 1
+Copy Sequence 1 At Sequence 2
+Label Sequence 2 "Backup"
+Go

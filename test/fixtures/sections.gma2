@@ -1,0 +1,12 @@
+# ---- Act One ----
+Store Cue 1 "Overture"
+Store Cue 2 "Scene 1"
+Store Cue 3 "Scene 2"
+
+# ---- Act Two ----
+Store Cue 10 "Intermission End"
+Store Cue 11 "Scene 3"
+
+# ---- Curtain Call ----
+Store Cue 20 "Bows"
+Go

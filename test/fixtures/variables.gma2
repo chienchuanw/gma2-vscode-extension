@@ -1,0 +1,11 @@
+SetVar $counter = 0
+SetVar $showMode = 1
+AddVar $counter = 1
+
+Goto Cue $counter
+Select Group $showMode
+
+[$counter >= 1] Go
+[$showMode == 1] Select Fixture 1 Thru 10
+
+Goto Cue $undeclared

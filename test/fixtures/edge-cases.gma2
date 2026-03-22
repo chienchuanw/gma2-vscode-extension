@@ -1,0 +1,13 @@
+# ---- Error Conditions ----
+
+Label Cue 1 "Unclosed string
+Storee Cue 1
+Goto Cue $undeclaredVar
+
+Store Cue 5 "First"
+Store Cue 5 "Duplicate"
+
+Go # inline comment
+
+unknownword something
+
