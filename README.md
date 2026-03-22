@@ -29,11 +29,11 @@ Hovering over a grandMA2 keyword surfaces a tooltip containing:
 - **Usage examples** -- Practical examples demonstrating the keyword in a real command context.
 - **Documentation link** -- Direct link to the corresponding MA Lighting help page.
 
-The documentation database currently covers **305 keywords** across all three categories:
+The documentation database currently covers **304 unique keywords** across all three categories:
 
 | Category | Count | Role |
 |---|---|---|
-| Function keywords | 172 | Commands that execute operations on the console (e.g., `Store`, `Copy`, `Go`, `Select`, `Park`) |
+| Function keywords | 171 | Commands that execute operations on the console (e.g., `Store`, `Copy`, `Go`, `Select`, `Park`) |
 | Object keywords | 96 | Targets that commands act upon (e.g., `Cue`, `Sequence`, `Fixture`, `Executor`, `Preset`) |
 | Helping keywords | 37 | Modifiers and control flow tokens (e.g., `Thru`, `At`, `Please`, `And`, `If`) |
 
@@ -142,14 +142,18 @@ pnpm run package
 ```
 gma2-vscode-extension/
   src/
-    extension.ts          # Extension entry point; registers the hover provider
-    hoverProvider.ts      # HoverProvider implementation for keyword tooltips
-    keywordDocs.ts        # Keyword documentation database (305 entries)
+    extension.ts            # Extension entry point; registers all providers
+    hoverProvider.ts        # HoverProvider for keyword tooltips
+    completionProvider.ts   # CompletionItemProvider for keyword IntelliSense
+    foldingProvider.ts      # FoldingRangeProvider for sections and If/EndIf
+    keywordDocs.ts          # Keyword documentation database (304 entries)
+  snippets/
+    gma2.json               # Snippet templates for common command patterns
   syntaxes/
-    gma2.tmLanguage.json  # TextMate grammar for syntax highlighting
-  language-configuration.json  # Language configuration (comments, brackets)
+    gma2.tmLanguage.json    # TextMate grammar for syntax highlighting
+  language-configuration.json
   examples/
-    demo.gma2             # Sample file demonstrating all syntax features
+    demo.gma2               # Sample file demonstrating all syntax features
 ```
 
 ## About grandMA2

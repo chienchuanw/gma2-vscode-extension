@@ -265,6 +265,8 @@ const functionKeywordDocs: KeywordDoc[] = [
     name: "AlignFaderModules",
     category: "function",
     description: "Aligns fader modules to match the console's executor layout.",
+    syntax: "AlignFaderModules",
+    examples: ["AlignFaderModules"],
     docUrl: keywordDocUrl("alignfadermodules"),
   },
   {
@@ -280,6 +282,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Selects all rows in the current view or editor.",
     syntax: "AllRows",
+    examples: ["AllRows"],
     docUrl: keywordDocUrl("allrows"),
   },
   {
@@ -287,6 +290,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Creates a backup of the current show file to an external drive.",
     syntax: "Backup",
+    examples: ["Backup"],
     docUrl: keywordDocUrl("backup"),
   },
   {
@@ -302,6 +306,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Blacks out the console screen displays.",
     syntax: "BlackScreen",
+    examples: ["BlackScreen"],
     docUrl: keywordDocUrl("blackscreen"),
   },
   {
@@ -309,6 +314,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Activates the grandmaster blackout, suppressing all output.",
     syntax: "Blackout",
+    examples: ["Blackout"],
     docUrl: keywordDocUrl("blackout"),
   },
   {
@@ -316,6 +322,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Enters blind edit mode to modify cue data without affecting live output.",
     syntax: "BlindEdit",
+    examples: ["BlindEdit"],
     docUrl: keywordDocUrl("blindedit"),
   },
   {
@@ -339,6 +346,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Changes the command destination to a different executor or sequence.",
     syntax: "ChangeDest [executor]",
+    examples: ["ChangeDest Executor 1.1"],
     docUrl: keywordDocUrl("changedest"),
   },
   {
@@ -346,6 +354,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Links or unlinks channels for synchronized control.",
     syntax: "ChannelLink [channel]",
+    examples: ["ChannelLink Channel 1"],
     docUrl: keywordDocUrl("channellink"),
   },
   {
@@ -353,6 +362,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Opens the chat window for sending messages across the network session.",
     syntax: 'Chat "message"',
+    examples: ["Chat \"Check followspot comms\""],
     docUrl: keywordDocUrl("chat"),
   },
   {
@@ -360,6 +370,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Creates a circular copy of fixture or cue data.",
     syntax: "CircularCopy [object]",
+    examples: ["CircularCopy Cue 1 Thru 5 At Cue 11"],
     docUrl: keywordDocUrl("circularcopy"),
   },
   {
@@ -367,6 +378,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Clears active (output) values from the programmer, keeping selection.",
     syntax: "ClearActive",
+    examples: ["ClearActive"],
     docUrl: keywordDocUrl("clearactive"),
   },
   {
@@ -374,6 +386,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Clears the current fixture selection without clearing programmer values.",
     syntax: "ClearSelection",
+    examples: ["ClearSelection"],
     docUrl: keywordDocUrl("clearselection"),
   },
   {
@@ -381,6 +394,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Displays command-line help and keyword reference information.",
     syntax: "CmdHelp",
+    examples: ["CmdHelp"],
     docUrl: keywordDocUrl("cmdhelp"),
   },
   {
@@ -388,6 +402,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Copies crash log files to a USB drive for analysis.",
     syntax: "CrashLogCopy",
+    examples: ["CrashLogCopy"],
     docUrl: keywordDocUrl("crashlogcopy"),
   },
   {
@@ -395,6 +410,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Deletes crash log files from the console.",
     syntax: "CrashLogDelete",
+    examples: ["CrashLogDelete"],
     docUrl: keywordDocUrl("crashlogdelete"),
   },
   {
@@ -402,6 +418,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Lists all available crash log files on the console.",
     syntax: "CrashLogList",
+    examples: ["CrashLogList"],
     docUrl: keywordDocUrl("crashloglist"),
   },
   {
@@ -417,6 +434,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Deletes a show file from the console storage.",
     syntax: 'DeleteShow "showname"',
+    examples: ["DeleteShow \"OldTour\""],
     docUrl: keywordDocUrl("deleteshow"),
   },
   {
@@ -424,6 +442,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Disconnects a station from the current network session.",
     syntax: "DisconnectStation [station]",
+    examples: ["DisconnectStation 11"],
     docUrl: keywordDocUrl("disconnectstation"),
   },
   {
@@ -431,6 +450,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Doubles the current effect rate speed.",
     syntax: "DoubleRate [executor]",
+    examples: ["DoubleRate Executor 1.1"],
     docUrl: keywordDocUrl("doublerate"),
   },
   {
@@ -438,6 +458,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Doubles the executor playback speed.",
     syntax: "DoubleSpeed [executor]",
+    examples: ["DoubleSpeed Executor 1.1"],
     docUrl: keywordDocUrl("doublespeed"),
   },
   {
@@ -445,6 +466,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Drops control of shared parameters back to the session.",
     syntax: "DropControl",
+    examples: ["DropControl"],
     docUrl: keywordDocUrl("dropcontrol"),
   },
   {
@@ -452,6 +474,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Ends the current network session.",
     syntax: "EndSession",
+    examples: ["EndSession"],
     docUrl: keywordDocUrl("endsession"),
   },
   {
@@ -459,6 +482,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Exits the current menu, editor, or mode.",
     syntax: "Exit",
+    examples: ["Exit"],
     docUrl: keywordDocUrl("exit"),
   },
   {
@@ -482,6 +506,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Flashes an executor with Go functionality (triggers next cue while held).",
     syntax: "FlashGo [executor]",
+    examples: ["FlashGo Executor 2.1"],
     docUrl: keywordDocUrl("flashgo"),
   },
   {
@@ -489,6 +514,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Flashes an executor with On functionality (turns on while held).",
     syntax: "FlashOn [executor]",
+    examples: ["FlashOn Executor 2.1"],
     docUrl: keywordDocUrl("flashon"),
   },
   {
@@ -512,6 +538,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Halves the current effect rate speed.",
     syntax: "HalfRate [executor]",
+    examples: ["HalfRate Executor 1.1"],
     docUrl: keywordDocUrl("halfrate"),
   },
   {
@@ -519,6 +546,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Halves the executor playback speed.",
     syntax: "HalfSpeed [executor]",
+    examples: ["HalfSpeed Executor 1.1"],
     docUrl: keywordDocUrl("halfspeed"),
   },
   {
@@ -526,6 +554,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Displays help information for the console or a specific topic.",
     syntax: "Help [topic]",
+    examples: ["Help Store"],
     docUrl: keywordDocUrl("help"),
   },
   {
@@ -541,6 +570,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Conditional execution based on whether fixtures have active values in the programmer.",
     syntax: "IfActive [fixture]",
+    examples: ["IfActive Fixture 1"],
     docUrl: keywordDocUrl("ifactive"),
   },
   {
@@ -548,6 +578,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Conditional execution based on the current output values of fixtures.",
     syntax: "IfOutput [fixture]",
+    examples: ["IfOutput Fixture 1"],
     docUrl: keywordDocUrl("ifoutput"),
   },
   {
@@ -555,6 +586,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Conditional execution based on whether values exist in the programmer.",
     syntax: "IfProg [fixture]",
+    examples: ["IfProg Fixture 1"],
     docUrl: keywordDocUrl("ifprog"),
   },
   {
@@ -586,6 +618,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Invites a station to join the current network session.",
     syntax: "InviteStation [station]",
+    examples: ["InviteStation 12"],
     docUrl: keywordDocUrl("invitestation"),
   },
   {
@@ -593,6 +626,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Joins an existing network session on the MA system.",
     syntax: 'JoinSession "sessionname"',
+    examples: ["JoinSession \"MainSession\""],
     docUrl: keywordDocUrl("joinsession"),
   },
   {
@@ -608,6 +642,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Selects a layer for editing in effects, presets, or sequences.",
     syntax: "Layer [number]",
+    examples: ["Layer 2"],
     docUrl: keywordDocUrl("layer"),
   },
   {
@@ -615,6 +650,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Learns speed from manual tap tempo input.",
     syntax: "Learn [executor]",
+    examples: ["Learn Executor 1.1"],
     docUrl: keywordDocUrl("learn"),
   },
   {
@@ -622,6 +658,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Leaves the current network session.",
     syntax: "LeaveSession",
+    examples: ["LeaveSession"],
     docUrl: keywordDocUrl("leavesession"),
   },
   {
@@ -629,6 +666,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Lists the contents of the effect library.",
     syntax: "ListEffectLibrary",
+    examples: ["ListEffectLibrary"],
     docUrl: keywordDocUrl("listeffectlibrary"),
   },
   {
@@ -636,6 +674,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Lists all connected fader modules and their status.",
     syntax: "ListFaderModules",
+    examples: ["ListFaderModules"],
     docUrl: keywordDocUrl("listfadermodules"),
   },
   {
@@ -643,6 +682,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Lists the contents of the data library.",
     syntax: "ListLibrary",
+    examples: ["ListLibrary"],
     docUrl: keywordDocUrl("listlibrary"),
   },
   {
@@ -650,6 +690,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Lists the contents of the macro library.",
     syntax: "ListMacroLibrary",
+    examples: ["ListMacroLibrary"],
     docUrl: keywordDocUrl("listmacrolibrary"),
   },
   {
@@ -657,6 +698,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Lists available undo (oops) operations.",
     syntax: "ListOops",
+    examples: ["ListOops"],
     docUrl: keywordDocUrl("listoops"),
   },
   {
@@ -664,6 +706,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Lists owners of shared objects in the session.",
     syntax: "ListOwner",
+    examples: ["ListOwner"],
     docUrl: keywordDocUrl("listowner"),
   },
   {
@@ -671,6 +714,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Lists the contents of the plugin library.",
     syntax: "ListPluginLibrary",
+    examples: ["ListPluginLibrary"],
     docUrl: keywordDocUrl("listpluginlibrary"),
   },
   {
@@ -678,6 +722,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Lists all available show files on the console storage.",
     syntax: "ListShows",
+    examples: ["ListShows"],
     docUrl: keywordDocUrl("listshows"),
   },
   {
@@ -685,6 +730,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Lists pending software or firmware updates.",
     syntax: "ListUpdate",
+    examples: ["ListUpdate"],
     docUrl: keywordDocUrl("listupdate"),
   },
   {
@@ -692,6 +738,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Lists all user variables and their current values.",
     syntax: "ListUserVar",
+    examples: ["ListUserVar"],
     docUrl: keywordDocUrl("listuservar"),
   },
   {
@@ -699,6 +746,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Lists all global variables and their current values.",
     syntax: "ListVar",
+    examples: ["ListVar"],
     docUrl: keywordDocUrl("listvar"),
   },
   {
@@ -706,6 +754,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Loads the next cue or item in the sequence.",
     syntax: "LoadNext [executor]",
+    examples: ["LoadNext Executor 1.1"],
     docUrl: keywordDocUrl("loadnext"),
   },
   {
@@ -713,6 +762,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Loads the previous cue or item in the sequence.",
     syntax: "LoadPrev [executor]",
+    examples: ["LoadPrev Executor 1.1"],
     docUrl: keywordDocUrl("loadprev"),
   },
   {
@@ -720,6 +770,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Loads a show file from the console storage.",
     syntax: 'LoadShow "showname"',
+    examples: ["LoadShow \"Festival2026\""],
     docUrl: keywordDocUrl("loadshow"),
   },
   {
@@ -735,6 +786,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Locks the console to prevent unauthorized access.",
     syntax: "Lock",
+    examples: ["Lock"],
     docUrl: keywordDocUrl("lock"),
   },
   {
@@ -742,6 +794,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Logs in a user to the console.",
     syntax: 'Login "username" "password"',
+    examples: ["Login \"Admin\" \"admin\""],
     docUrl: keywordDocUrl("login"),
   },
   {
@@ -749,6 +802,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Logs out the current user from the console.",
     syntax: "Logout",
+    examples: ["Logout"],
     docUrl: keywordDocUrl("logout"),
   },
   {
@@ -756,6 +810,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Sets the block size in MAtricks for grouping fixtures.",
     syntax: "MAtricksBlocks [number]",
+    examples: ["MAtricksBlocks 2"],
     docUrl: keywordDocUrl("matricksblocks"),
   },
   {
@@ -763,6 +818,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Sets the filter value in MAtricks for fixture selection patterns.",
     syntax: "MAtricksFilter [number]",
+    examples: ["MAtricksFilter 1"],
     docUrl: keywordDocUrl("matricksfilter"),
   },
   {
@@ -770,6 +826,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Sets the group count in MAtricks for dividing the selection.",
     syntax: "MAtricksGroups [number]",
+    examples: ["MAtricksGroups 3"],
     docUrl: keywordDocUrl("matricksgroups"),
   },
   {
@@ -777,6 +834,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Sets the interleave value in MAtricks for alternating fixture patterns.",
     syntax: "MAtricksInterleave [number]",
+    examples: ["MAtricksInterleave 2"],
     docUrl: keywordDocUrl("matricksinterleave"),
   },
   {
@@ -784,6 +842,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Resets all MAtricks settings to their default values.",
     syntax: "MAtricksReset",
+    examples: ["MAtricksReset"],
     docUrl: keywordDocUrl("matricksreset"),
   },
   {
@@ -791,6 +850,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Sets the wings count in MAtricks for mirrored fixture patterns.",
     syntax: "MAtricksWings [number]",
+    examples: ["MAtricksWings 2"],
     docUrl: keywordDocUrl("matrickswings"),
   },
   {
@@ -798,6 +858,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Activates manual crossfade mode for an executor.",
     syntax: "ManualXFade [executor]",
+    examples: ["ManualXFade Executor 1.1"],
     docUrl: keywordDocUrl("manualxfade"),
   },
   {
@@ -805,6 +866,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Controls the master fade time for executor transitions.",
     syntax: "MasterFade [time]",
+    examples: ["MasterFade 3"],
     docUrl: keywordDocUrl("masterfade"),
   },
   {
@@ -812,6 +874,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Opens a specified menu on the console display.",
     syntax: "Menu [menuname]",
+    examples: ["Menu Setup"],
     docUrl: keywordDocUrl("menu"),
   },
   {
@@ -819,6 +882,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Sends or configures MIDI control change messages.",
     syntax: "MidiControl [channel] [controller] [value]",
+    examples: ["MidiControl 1 7 127"],
     docUrl: keywordDocUrl("midicontrol"),
   },
   {
@@ -826,6 +890,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Sends or configures MIDI note messages.",
     syntax: "MidiNote [channel] [note] [velocity]",
+    examples: ["MidiNote 1 60 100"],
     docUrl: keywordDocUrl("midinote"),
   },
   {
@@ -833,6 +898,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Sends or configures MIDI program change messages.",
     syntax: "MidiProgram [channel] [program]",
+    examples: ["MidiProgram 1 10"],
     docUrl: keywordDocUrl("midiprogram"),
   },
   {
@@ -840,6 +906,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Moves a 3D object in the virtual stage view.",
     syntax: "Move3D [object]",
+    examples: ["Move3D Item3D 1"],
     docUrl: keywordDocUrl("move3d"),
   },
   {
@@ -847,6 +914,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Displays information about the current network configuration.",
     syntax: "NetworkInfo",
+    examples: ["NetworkInfo"],
     docUrl: keywordDocUrl("networkinfo"),
   },
   {
@@ -854,6 +922,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Displays detailed information about a specific network node.",
     syntax: "NetworkNodeInfo [node]",
+    examples: ["NetworkNodeInfo 1"],
     docUrl: keywordDocUrl("networknodeinfo"),
   },
   {
@@ -861,6 +930,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Updates the firmware on a network node.",
     syntax: "NetworkNodeUpdate [node]",
+    examples: ["NetworkNodeUpdate 1"],
     docUrl: keywordDocUrl("networknodeupdate"),
   },
   {
@@ -868,6 +938,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Runs a network speed test between console and network nodes.",
     syntax: "NetworkSpeedTest",
+    examples: ["NetworkSpeedTest"],
     docUrl: keywordDocUrl("networkspeedtest"),
   },
   {
@@ -875,6 +946,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Creates a new empty show file.",
     syntax: 'NewShow "showname"',
+    examples: ["NewShow \"PreVis\""],
     docUrl: keywordDocUrl("newshow"),
   },
   {
@@ -882,6 +954,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Moves the selection to the next row in the current view.",
     syntax: "NextRow",
+    examples: ["NextRow"],
     docUrl: keywordDocUrl("nextrow"),
   },
   {
@@ -889,6 +962,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Performs a Partial Show Read, merging data from another show file.",
     syntax: 'PSR "showname"',
+    examples: ["PSR \"TourMaster\""],
     docUrl: keywordDocUrl("psr"),
   },
   {
@@ -896,6 +970,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Lists available data for Partial Show Read operations.",
     syntax: "PSRList",
+    examples: ["PSRList"],
     docUrl: keywordDocUrl("psrlist"),
   },
   {
@@ -903,6 +978,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Prepares data for a Partial Show Read operation.",
     syntax: 'PSRPrepare "showname"',
+    examples: ["PSRPrepare \"TourMaster\""],
     docUrl: keywordDocUrl("psrprepare"),
   },
   {
@@ -926,6 +1002,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Moves the selection to the previous row in the current view.",
     syntax: "PrevRow",
+    examples: ["PrevRow"],
     docUrl: keywordDocUrl("prevrow"),
   },
   {
@@ -933,6 +1010,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Activates preview mode to visualize changes without affecting live output.",
     syntax: "Preview [executor]",
+    examples: ["Preview Executor 1.1"],
     docUrl: keywordDocUrl("preview"),
   },
   {
@@ -940,6 +1018,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Enters preview edit mode for editing in a preview visualizer.",
     syntax: "PreviewEdit",
+    examples: ["PreviewEdit"],
     docUrl: keywordDocUrl("previewedit"),
   },
   {
@@ -947,6 +1026,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Resets the executor or effect rate to 1:1 (100%).",
     syntax: "Rate1 [executor]",
+    examples: ["Rate1 Executor 1.1"],
     docUrl: keywordDocUrl("rate1"),
   },
   {
@@ -954,6 +1034,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Reboots the console hardware.",
     syntax: "Reboot",
+    examples: ["Reboot"],
     docUrl: keywordDocUrl("reboot"),
   },
   {
@@ -969,6 +1050,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Reloads all installed plugins on the console.",
     syntax: "ReloadPlugins",
+    examples: ["ReloadPlugins"],
     docUrl: keywordDocUrl("reloadplugins"),
   },
   {
@@ -976,6 +1058,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Sends a command to a remote console in the network session.",
     syntax: 'RemoteCommand [station] "command"',
+    examples: ["RemoteCommand 11 \"Go Executor 1.1\""],
     docUrl: keywordDocUrl("remotecommand"),
   },
   {
@@ -991,6 +1074,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Removes individual fixture values, keeping only range-based values.",
     syntax: "RemoveIndividuals",
+    examples: ["RemoveIndividuals"],
     docUrl: keywordDocUrl("removeindividuals"),
   },
   {
@@ -998,6 +1082,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Replaces one fixture's data with another fixture in the show.",
     syntax: "Replace Fixture [source] At Fixture [target]",
+    examples: ["Replace Fixture 101 At Fixture 201"],
     docUrl: keywordDocUrl("replace"),
   },
   {
@@ -1005,6 +1090,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Resets the current DMX selection to default.",
     syntax: "ResetDmxSelection",
+    examples: ["ResetDmxSelection"],
     docUrl: keywordDocUrl("resetdmxselection"),
   },
   {
@@ -1012,6 +1098,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Resets the GUID (globally unique identifier) of the console.",
     syntax: "ResetGuid",
+    examples: ["ResetGuid"],
     docUrl: keywordDocUrl("resetguid"),
   },
   {
@@ -1019,6 +1106,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Restarts the console application software.",
     syntax: "Restart",
+    examples: ["Restart"],
     docUrl: keywordDocUrl("restart"),
   },
   {
@@ -1026,6 +1114,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Rotates a 3D object in the virtual stage view.",
     syntax: "Rotate3D [object]",
+    examples: ["Rotate3D Item3D 1"],
     docUrl: keywordDocUrl("rotate3d"),
   },
   {
@@ -1033,6 +1122,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Saves the current show file to the console storage.",
     syntax: 'SaveShow "showname"',
+    examples: ["SaveShow \"Festival2026\""],
     docUrl: keywordDocUrl("saveshow"),
   },
   {
@@ -1040,6 +1130,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Searches for objects or text within the current show.",
     syntax: 'Search "text"',
+    examples: ["Search \"Lead Vocal\""],
     docUrl: keywordDocUrl("search"),
   },
   {
@@ -1055,6 +1146,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Selects a storage drive for file operations.",
     syntax: "SelectDrive [drive]",
+    examples: ["SelectDrive USB"],
     docUrl: keywordDocUrl("selectdrive"),
   },
   {
@@ -1062,6 +1154,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Sets the IP address of the console network interface.",
     syntax: 'SetIP "ip-address"',
+    examples: ["SetIP \"192.168.0.100\""],
     docUrl: keywordDocUrl("setip"),
   },
   {
@@ -1085,6 +1178,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Opens the console setup menu.",
     syntax: "Setup",
+    examples: ["Setup"],
     docUrl: keywordDocUrl("setup"),
   },
   {
@@ -1092,6 +1186,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Shuffles the order of the currently selected fixtures.",
     syntax: "ShuffleSelection",
+    examples: ["ShuffleSelection"],
     docUrl: keywordDocUrl("shuffleselection"),
   },
   {
@@ -1099,6 +1194,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Shuffles attribute values randomly across the selected fixtures.",
     syntax: "ShuffleValues",
+    examples: ["ShuffleValues"],
     docUrl: keywordDocUrl("shufflevalues"),
   },
   {
@@ -1106,6 +1202,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Shuts down the console safely.",
     syntax: "Shutdown",
+    examples: ["Shutdown"],
     docUrl: keywordDocUrl("shutdown"),
   },
   {
@@ -1113,6 +1210,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Activates solo mode, isolating the selected fixtures' output.",
     syntax: "Solo",
+    examples: ["Solo"],
     docUrl: keywordDocUrl("solo"),
   },
   {
@@ -1120,6 +1218,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Sets the executor or effect playback speed.",
     syntax: "Speed [executor] [value]",
+    examples: ["Speed Executor 1.1 1.25"],
     docUrl: keywordDocUrl("speed"),
   },
   {
@@ -1127,6 +1226,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Sets the step fade time for cue transitions.",
     syntax: "StepFade [time]",
+    examples: ["StepFade 2"],
     docUrl: keywordDocUrl("stepfade"),
   },
   {
@@ -1134,6 +1234,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Sets the fade-in time for individual cue steps.",
     syntax: "StepInFade [time]",
+    examples: ["StepInFade 1"],
     docUrl: keywordDocUrl("stepinfade"),
   },
   {
@@ -1141,6 +1242,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Sets the fade-out time for individual cue steps.",
     syntax: "StepOutFade [time]",
+    examples: ["StepOutFade 1.5"],
     docUrl: keywordDocUrl("stepoutfade"),
   },
   {
@@ -1156,6 +1258,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Stores the current live output as a look for later recall.",
     syntax: "StoreLook [number]",
+    examples: ["StoreLook 1"],
     docUrl: keywordDocUrl("storelook"),
   },
   {
@@ -1171,6 +1274,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Swop with Go functionality — activates with cue advance while suppressing others.",
     syntax: "SwopGo [executor]",
+    examples: ["SwopGo Executor 3.1"],
     docUrl: keywordDocUrl("swopgo"),
   },
   {
@@ -1178,6 +1282,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Swop with On functionality — turns on executor while suppressing others.",
     syntax: "SwopOn [executor]",
+    examples: ["SwopOn Executor 3.1"],
     docUrl: keywordDocUrl("swopon"),
   },
   {
@@ -1185,6 +1290,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Synchronizes all running effects to a common phase.",
     syntax: "SyncEffects",
+    examples: ["SyncEffects"],
     docUrl: keywordDocUrl("synceffects"),
   },
   {
@@ -1192,6 +1298,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Takes control of shared parameters in a multi-user session.",
     syntax: "TakeControl",
+    examples: ["TakeControl"],
     docUrl: keywordDocUrl("takecontrol"),
   },
   {
@@ -1207,6 +1314,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Assigns a temporary fader function to an executor.",
     syntax: "TempFader [executor]",
+    examples: ["TempFader Executor 4.1"],
     docUrl: keywordDocUrl("tempfader"),
   },
   {
@@ -1214,6 +1322,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Opens the tools menu on the console.",
     syntax: "Tools",
+    examples: ["Tools"],
     docUrl: keywordDocUrl("tools"),
   },
   {
@@ -1237,6 +1346,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Unlocks the console or a locked object.",
     syntax: "Unlock",
+    examples: ["Unlock"],
     docUrl: keywordDocUrl("unlock"),
   },
   {
@@ -1244,6 +1354,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Updates the console firmware to a newer version.",
     syntax: "UpdateFirmware",
+    examples: ["UpdateFirmware"],
     docUrl: keywordDocUrl("updatefirmware"),
   },
   {
@@ -1251,6 +1362,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Updates the console software to a newer version.",
     syntax: "UpdateSoftware",
+    examples: ["UpdateSoftware"],
     docUrl: keywordDocUrl("updatesoftware"),
   },
   {
@@ -1258,6 +1370,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Updates fixture thumbnails displayed in layout and fixture views.",
     syntax: "UpdateThumbnails",
+    examples: ["UpdateThumbnails"],
     docUrl: keywordDocUrl("updatethumbnails"),
   },
   {
@@ -1265,6 +1378,7 @@ const functionKeywordDocs: KeywordDoc[] = [
     category: "function",
     description: "Displays the current software version of the console.",
     syntax: "Version",
+    examples: ["Version"],
     docUrl: keywordDocUrl("version"),
   },
 ];
@@ -1274,108 +1388,183 @@ const objectKeywordDocs: KeywordDoc[] = [
     name: "Cue",
     category: "object",
     description: "A stored lighting state within a sequence.",
+    syntax: "[Function] Cue [number]",
+    examples: [
+      "Store Cue 1 \"Intro\"",
+      "Goto Cue 5",
+    ],
     docUrl: keywordDocUrl("cue"),
   },
   {
     name: "Sequence",
     category: "object",
     description: "An ordered list of cues for playback.",
+    syntax: "[Function] Sequence [number]",
+    examples: [
+      "Store Sequence 1",
+      "Assign Sequence 1 At Executor 1.1",
+    ],
     docUrl: keywordDocUrl("sequence"),
   },
   {
     name: "Executor",
     category: "object",
     description: "A physical or virtual control assigned to a sequence.",
+    syntax: "[Function] Executor [number]",
+    examples: ["Off Executor 1.1"],
     docUrl: keywordDocUrl("executor"),
   },
   {
     name: "Group",
     category: "object",
     description: "A named collection of fixtures for quick selection.",
+    syntax: "[Function] Group [number]",
+    examples: [
+      "Store Group 1 \"Band\"",
+      "Select Group 1",
+    ],
     docUrl: keywordDocUrl("group"),
   },
   {
     name: "Preset",
     category: "object",
     description: "Stored attribute values that can be referenced in cues.",
+    syntax: "[Function] Preset [number]",
+    examples: [
+      "Store Preset 4.1 \"Blue\"",
+      "At Preset 4.1",
+    ],
     docUrl: keywordDocUrl("preset"),
   },
   {
     name: "Channel",
     category: "object",
     description: "A logical control channel for a fixture.",
+    syntax: "[Function] Channel [number]",
+    examples: ["Channel 1 Thru 10 At 75"],
     docUrl: keywordDocUrl("channel"),
   },
   {
     name: "Fixture",
     category: "object",
     description: "A physical lighting device in the patch.",
+    syntax: "[Function] Fixture [number]",
+    examples: ["Select Fixture 1 Thru 12"],
     docUrl: keywordDocUrl("fixture"),
   },
   {
     name: "Macro",
     category: "object",
     description: "A stored sequence of console commands for automation.",
+    syntax: "[Function] Macro [number]",
+    examples: [
+      "Store Macro 5",
+      "Call Macro 5",
+    ],
     docUrl: keywordDocUrl("macro"),
   },
   {
     name: "Effect",
     category: "object",
     description: "A dynamic effect applied to fixture attributes.",
+    syntax: "[Function] Effect [number]",
+    examples: [
+      "Store Effect 1",
+      "Assign Effect 1 At Executor 2.1",
+    ],
     docUrl: keywordDocUrl("effect"),
   },
   {
     name: "Page",
     category: "object",
     description: "A page of executors that can be switched.",
+    syntax: "Page [number]",
+    examples: [
+      "Page 2",
+      "Goto Page 3",
+    ],
     docUrl: keywordDocUrl("page"),
   },
   {
     name: "Fader",
     category: "object",
     description: "A physical or virtual fader control.",
+    syntax: "[Function] Fader [number]",
+    examples: ["List Fader 1"],
     docUrl: keywordDocUrl("fader"),
   },
   {
     name: "View",
     category: "object",
     description: "A saved screen layout configuration.",
+    syntax: "[Function] View [number]",
+    examples: [
+      "Store View 3",
+      "View 3",
+    ],
     docUrl: keywordDocUrl("view"),
   },
   {
     name: "Layout",
     category: "object",
     description: "A graphical fixture layout for visualization.",
+    syntax: "[Function] Layout [number]",
+    examples: [
+      "Store Layout 1",
+      "Edit Layout 1",
+    ],
     docUrl: keywordDocUrl("layout"),
   },
   {
     name: "World",
     category: "object",
     description: "A filter limiting which fixtures are visible or selectable.",
+    syntax: "[Function] World [number]",
+    examples: [
+      "Store World 1 \"FrontTruss\"",
+      "Assign World 1 At Executor 3.1",
+    ],
     docUrl: keywordDocUrl("world"),
   },
   {
     name: "Timecode",
     category: "object",
     description: "A timecode show for time-based cue triggering.",
+    syntax: "[Function] Timecode [number]",
+    examples: [
+      "Store Timecode 1",
+      "Edit Timecode 1",
+    ],
     docUrl: keywordDocUrl("timecode"),
   },
   {
     name: "Timer",
     category: "object",
     description: "A countdown or stopwatch timer.",
+    syntax: "[Function] Timer [number]",
+    examples: [
+      "Store Timer 1",
+      "Edit Timer 1",
+    ],
     docUrl: keywordDocUrl("timer"),
   },
   {
     name: "Agenda",
     category: "object",
     description: "A scheduled event list for automated show execution.",
+    syntax: "[Function] Agenda [number]",
+    examples: [
+      "Store Agenda 1",
+      "Edit Agenda 1",
+    ],
     docUrl: keywordDocUrl("agenda"),
   },
   {
     name: "Appearance",
     category: "object",
     description: "A visual appearance preset for UI elements and objects.",
+    syntax: "[Function] Appearance [number]",
+    examples: ["Assign Appearance 3 At Macro 1"],
     docUrl: keywordDocUrl("appearance"),
   },
   {
@@ -1383,42 +1572,59 @@ const objectKeywordDocs: KeywordDoc[] = [
     category: "object",
     description:
       "A controllable parameter of a fixture such as intensity, color, or position.",
+    syntax: "[Function] Attribute [name]",
+    examples: ["List Attribute \"Dimmer\""],
     docUrl: keywordDocUrl("attribute"),
   },
   {
     name: "AutoCreate",
     category: "object",
     description: "An automatic object creation setting for show programming.",
+    syntax: "[Function] AutoCreate [name]",
+    examples: ["List AutoCreate"],
     docUrl: keywordDocUrl("autocreate"),
   },
   {
     name: "ButtonPage",
     category: "object",
     description: "A page of button executors.",
+    syntax: "[Function] ButtonPage [number]",
+    examples: ["List ButtonPage 1"],
     docUrl: keywordDocUrl("buttonpage"),
   },
   {
     name: "Camera",
     category: "object",
     description: "A virtual camera for 3D stage visualization.",
+    syntax: "[Function] Camera [number]",
+    examples: [
+      "Store Camera 1",
+      "Edit Camera 1",
+    ],
     docUrl: keywordDocUrl("camera"),
   },
   {
     name: "ChannelFader",
     category: "object",
     description: "A fader assigned to a specific channel for direct control.",
+    syntax: "[Function] ChannelFader [number]",
+    examples: ["List ChannelFader 1"],
     docUrl: keywordDocUrl("channelfader"),
   },
   {
     name: "ChannelPage",
     category: "object",
     description: "A page of channel faders.",
+    syntax: "[Function] ChannelPage [number]",
+    examples: ["List ChannelPage 1"],
     docUrl: keywordDocUrl("channelpage"),
   },
   {
     name: "Crossfade",
     category: "object",
     description: "A transition parameter controlling the crossfade between cues.",
+    syntax: "Assign Crossfade [time] Cue [number]",
+    examples: ["Assign Crossfade 3 Cue 1"],
     docUrl: keywordDocUrl("crossfade"),
   },
   {
@@ -1426,6 +1632,8 @@ const objectKeywordDocs: KeywordDoc[] = [
     category: "object",
     description:
       "The first crossfade path (A) for split crossfade transitions.",
+    syntax: "Assign CrossfadeA [time] Cue [number]",
+    examples: ["Assign CrossfadeA 2 Cue 1"],
     docUrl: keywordDocUrl("crossfadea"),
   },
   {
@@ -1433,132 +1641,176 @@ const objectKeywordDocs: KeywordDoc[] = [
     category: "object",
     description:
       "The second crossfade path (B) for split crossfade transitions.",
+    syntax: "Assign CrossfadeB [time] Cue [number]",
+    examples: ["Assign CrossfadeB 4 Cue 1"],
     docUrl: keywordDocUrl("crossfadeb"),
   },
   {
     name: "Dmx",
     category: "object",
     description: "A DMX output configuration object.",
+    syntax: "[Function] Dmx [number]",
+    examples: ["List Dmx 1"],
     docUrl: keywordDocUrl("dmx"),
   },
   {
     name: "DmxUniverse",
     category: "object",
     description: "A single DMX universe of 512 channels.",
+    syntax: "[Function] DmxUniverse [number]",
+    examples: ["List DmxUniverse 1"],
     docUrl: keywordDocUrl("dmxuniverse"),
   },
   {
     name: "EffectAttack",
     category: "object",
     description: "The attack time parameter of an effect.",
+    syntax: "Assign EffectAttack [value] Effect [number]",
+    examples: ["Assign EffectAttack 50 Effect 1"],
     docUrl: keywordDocUrl("effectattack"),
   },
   {
     name: "EffectBPM",
     category: "object",
     description: "The beats-per-minute tempo parameter of an effect.",
+    syntax: "Assign EffectBPM [value] Effect [number]",
+    examples: ["Assign EffectBPM 120 Effect 1"],
     docUrl: keywordDocUrl("effectbpm"),
   },
   {
     name: "EffectDecay",
     category: "object",
     description: "The decay time parameter of an effect.",
+    syntax: "Assign EffectDecay [value] Effect [number]",
+    examples: ["Assign EffectDecay 20 Effect 1"],
     docUrl: keywordDocUrl("effectdecay"),
   },
   {
     name: "EffectDelay",
     category: "object",
     description: "The delay time parameter of an effect.",
+    syntax: "Assign EffectDelay [value] Effect [number]",
+    examples: ["Assign EffectDelay 10 Effect 1"],
     docUrl: keywordDocUrl("effectdelay"),
   },
   {
     name: "EffectFade",
     category: "object",
     description: "The fade time parameter of an effect.",
+    syntax: "Assign EffectFade [value] Effect [number]",
+    examples: ["Assign EffectFade 2 Effect 1"],
     docUrl: keywordDocUrl("effectfade"),
   },
   {
     name: "EffectForm",
     category: "object",
     description: "The waveform shape parameter of an effect.",
+    syntax: "Assign EffectForm [value] Effect [number]",
+    examples: ["Assign EffectForm 3 Effect 1"],
     docUrl: keywordDocUrl("effectform"),
   },
   {
     name: "EffectHZ",
     category: "object",
     description: "The frequency parameter of an effect in Hertz.",
+    syntax: "Assign EffectHZ [value] Effect [number]",
+    examples: ["Assign EffectHZ 2 Effect 1"],
     docUrl: keywordDocUrl("effecthz"),
   },
   {
     name: "EffectHigh",
     category: "object",
     description: "The high value parameter of an effect.",
+    syntax: "Assign EffectHigh [value] Effect [number]",
+    examples: ["Assign EffectHigh 100 Effect 1"],
     docUrl: keywordDocUrl("effecthigh"),
   },
   {
     name: "EffectID",
     category: "object",
     description: "The ID parameter of an effect for fixture assignment.",
+    syntax: "Assign EffectID [value] Effect [number]",
+    examples: ["Assign EffectID 1 Effect 1"],
     docUrl: keywordDocUrl("effectid"),
   },
   {
     name: "EffectLow",
     category: "object",
     description: "The low value parameter of an effect.",
+    syntax: "Assign EffectLow [value] Effect [number]",
+    examples: ["Assign EffectLow 0 Effect 1"],
     docUrl: keywordDocUrl("effectlow"),
   },
   {
     name: "EffectPhase",
     category: "object",
     description: "The phase offset parameter of an effect.",
+    syntax: "Assign EffectPhase [value] Effect [number]",
+    examples: ["Assign EffectPhase 180 Effect 1"],
     docUrl: keywordDocUrl("effectphase"),
   },
   {
     name: "EffectSec",
     category: "object",
     description: "The speed parameter of an effect in seconds.",
+    syntax: "Assign EffectSec [value] Effect [number]",
+    examples: ["Assign EffectSec 1 Effect 1"],
     docUrl: keywordDocUrl("effectsec"),
   },
   {
     name: "EffectSpeedGroup",
     category: "object",
     description: "A speed group for synchronizing multiple effects.",
+    syntax: "Assign EffectSpeedGroup [value] Effect [number]",
+    examples: ["Assign EffectSpeedGroup 2 Effect 1"],
     docUrl: keywordDocUrl("effectspeedgroup"),
   },
   {
     name: "EffectWidth",
     category: "object",
     description: "The width parameter of an effect waveform.",
+    syntax: "Assign EffectWidth [value] Effect [number]",
+    examples: ["Assign EffectWidth 50 Effect 1"],
     docUrl: keywordDocUrl("effectwidth"),
   },
   {
     name: "ExecButton1",
     category: "object",
     description: "The first executor button assignment.",
+    syntax: "Assign ExecButton1 [function] Executor [number]",
+    examples: ["Assign ExecButton1 \"Flash\" Executor 1.1"],
     docUrl: keywordDocUrl("execbutton1"),
   },
   {
     name: "ExecButton2",
     category: "object",
     description: "The second executor button assignment.",
+    syntax: "Assign ExecButton2 [function] Executor [number]",
+    examples: ["Assign ExecButton2 \"Go\" Executor 1.1"],
     docUrl: keywordDocUrl("execbutton2"),
   },
   {
     name: "ExecButton3",
     category: "object",
     description: "The third executor button assignment.",
+    syntax: "Assign ExecButton3 [function] Executor [number]",
+    examples: ["Assign ExecButton3 \"Temp\" Executor 1.1"],
     docUrl: keywordDocUrl("execbutton3"),
   },
   {
     name: "FadePath",
     category: "object",
     description: "The fade path curve used for transitions.",
+    syntax: "Assign FadePath [number] Cue [number]",
+    examples: ["Assign FadePath 2 Cue 1"],
     docUrl: keywordDocUrl("fadepath"),
   },
   {
     name: "FaderPage",
     category: "object",
     description: "A page of fader executors.",
+    syntax: "[Function] FaderPage [number]",
+    examples: ["List FaderPage 1"],
     docUrl: keywordDocUrl("faderpage"),
   },
   {
@@ -1566,12 +1818,19 @@ const objectKeywordDocs: KeywordDoc[] = [
     category: "object",
     description:
       "A feature group of fixture attributes such as dimmer, color, or position.",
+    syntax: "[Function] Feature [name]",
+    examples: ["List Feature \"Color\""],
     docUrl: keywordDocUrl("feature"),
   },
   {
     name: "Filter",
     category: "object",
     description: "A filter for limiting displayed or accessible objects.",
+    syntax: "[Function] Filter [number]",
+    examples: [
+      "Store Filter 1 \"NoBeam\"",
+      "Assign Filter 1 At Sequence 1",
+    ],
     docUrl: keywordDocUrl("filter"),
   },
   {
@@ -1579,36 +1838,51 @@ const objectKeywordDocs: KeywordDoc[] = [
     category: "object",
     description:
       "A fixture type definition describing a lighting device's capabilities.",
+    syntax: "[Function] FixtureType [name]",
+    examples: ["List FixtureType \"MAC Aura\""],
     docUrl: keywordDocUrl("fixturetype"),
   },
   {
     name: "Form",
     category: "object",
     description: "A waveform shape used in effects.",
+    syntax: "Assign Form [number] Effect [number]",
+    examples: ["Assign Form 3 Effect 1"],
     docUrl: keywordDocUrl("form"),
   },
   {
     name: "Gel",
     category: "object",
     description: "A color gel reference from a gel library.",
+    syntax: "[Function] Gel [number]",
+    examples: ["List Gel 201"],
     docUrl: keywordDocUrl("gel"),
   },
   {
     name: "Image",
     category: "object",
     description: "An image resource used in layouts or screens.",
+    syntax: "[Function] Image [number]",
+    examples: [
+      "Import Image \"logo.png\"",
+      "List Image 1",
+    ],
     docUrl: keywordDocUrl("image"),
   },
   {
     name: "Item3D",
     category: "object",
     description: "A 3D object used in the stage visualization.",
+    syntax: "[Function] Item3D [number]",
+    examples: ["Move3D Item3D 1"],
     docUrl: keywordDocUrl("item3d"),
   },
   {
     name: "Lua",
     category: "object",
     description: "A Lua scripting plugin for custom console functionality.",
+    syntax: "[Function] Lua [name]",
+    examples: ["List Lua"],
     docUrl: keywordDocUrl("lua"),
   },
   {
@@ -1616,12 +1890,22 @@ const objectKeywordDocs: KeywordDoc[] = [
     category: "object",
     description:
       "A matrix-based selection and manipulation tool for fixture groups.",
+    syntax: "[Function] MAtricks [number]",
+    examples: [
+      "Store MAtricks 1",
+      "Assign MAtricks 1 At Executor 1.1",
+    ],
     docUrl: keywordDocUrl("matricks"),
   },
   {
     name: "Mask",
     category: "object",
     description: "A selection mask for filtering fixture attributes.",
+    syntax: "[Function] Mask [number]",
+    examples: [
+      "Store Mask 1",
+      "Assign Mask 1 At Sequence 1",
+    ],
     docUrl: keywordDocUrl("mask"),
   },
   {
@@ -1629,66 +1913,91 @@ const objectKeywordDocs: KeywordDoc[] = [
     category: "object",
     description:
       "A master fader for controlling groups of executors or parameters.",
+    syntax: "[Function] Master [number]",
+    examples: ["Assign Master 3 At Executor 4.1"],
     docUrl: keywordDocUrl("master"),
   },
   {
     name: "MediaServer",
     category: "object",
     description: "A media server configuration for video content control.",
+    syntax: "[Function] MediaServer [number]",
+    examples: ["List MediaServer 1"],
     docUrl: keywordDocUrl("mediaserver"),
   },
   {
     name: "Message",
     category: "object",
     description: "A system message or user-defined message.",
+    syntax: "[Function] Message [number]",
+    examples: ["List Message"],
     docUrl: keywordDocUrl("message"),
   },
   {
     name: "Messages",
     category: "object",
     description: "The message center containing system and user messages.",
+    syntax: "[Function] Messages",
+    examples: ["List Messages"],
     docUrl: keywordDocUrl("messages"),
   },
   {
     name: "Model",
     category: "object",
     description: "A 3D model used for fixture visualization.",
+    syntax: "[Function] Model [name]",
+    examples: ["List Model"],
     docUrl: keywordDocUrl("model"),
   },
   {
     name: "Normal",
     category: "object",
     description: "The normal playback mode for executors.",
+    syntax: "Assign Normal Executor [number]",
+    examples: ["Assign Normal Executor 1.1"],
     docUrl: keywordDocUrl("normal"),
   },
   {
     name: "PMArea",
     category: "object",
     description: "A partial show merge area for selective data import.",
+    syntax: "[Function] PMArea [number]",
+    examples: ["List PMArea 1"],
     docUrl: keywordDocUrl("pmarea"),
   },
   {
     name: "Part",
     category: "object",
     description: "A cue part for splitting cue data into timed sections.",
+    syntax: "[Function] Part [number] Cue [number]",
+    examples: ["Store Part 2 Cue 1"],
     docUrl: keywordDocUrl("part"),
   },
   {
     name: "Plugin",
     category: "object",
     description: "A Lua-based plugin extending console functionality.",
+    syntax: "[Function] Plugin [number]",
+    examples: [
+      "Store Plugin 1",
+      "Call Plugin 1",
+    ],
     docUrl: keywordDocUrl("plugin"),
   },
   {
     name: "PresetType",
     category: "object",
     description: "A preset type category such as dimmer, color, or position.",
+    syntax: "[Function] PresetType [number]",
+    examples: ["List PresetType 4"],
     docUrl: keywordDocUrl("presettype"),
   },
   {
     name: "PreviewExecutor",
     category: "object",
     description: "An executor used in preview or blind mode.",
+    syntax: "[Function] PreviewExecutor [number]",
+    examples: ["Preview PreviewExecutor 1.1"],
     docUrl: keywordDocUrl("previewexecutor"),
   },
   {
@@ -1696,48 +2005,64 @@ const objectKeywordDocs: KeywordDoc[] = [
     category: "object",
     description:
       "A user profile containing personal settings and permissions.",
+    syntax: "[Function] Profile [name]",
+    examples: ["List Profile"],
     docUrl: keywordDocUrl("profile"),
   },
   {
     name: "Protocol",
     category: "object",
     description: "A network protocol configuration for data output.",
+    syntax: "[Function] Protocol [name]",
+    examples: ["List Protocol"],
     docUrl: keywordDocUrl("protocol"),
   },
   {
     name: "Rate",
     category: "object",
     description: "A rate modifier for adjusting effect or executor speed.",
+    syntax: "Assign Rate [value] Executor [number]",
+    examples: ["Assign Rate 0.75 Executor 1.1"],
     docUrl: keywordDocUrl("rate"),
   },
   {
     name: "RdmAutomatch",
     category: "object",
     description: "RDM automatic matching of discovered devices.",
+    syntax: "[Function] RdmAutomatch",
+    examples: ["List RdmAutomatch"],
     docUrl: keywordDocUrl("rdmautomatch"),
   },
   {
     name: "RdmAutopatch",
     category: "object",
     description: "RDM automatic patching of discovered devices.",
+    syntax: "[Function] RdmAutopatch",
+    examples: ["List RdmAutopatch"],
     docUrl: keywordDocUrl("rdmautopatch"),
   },
   {
     name: "RdmFixtureType",
     category: "object",
     description: "An RDM-discovered fixture type definition.",
+    syntax: "[Function] RdmFixtureType [name]",
+    examples: ["List RdmFixtureType"],
     docUrl: keywordDocUrl("rdmfixturetype"),
   },
   {
     name: "RdmInfo",
     category: "object",
     description: "RDM device information and parameters.",
+    syntax: "[Function] RdmInfo",
+    examples: ["List RdmInfo"],
     docUrl: keywordDocUrl("rdminfo"),
   },
   {
     name: "RdmList",
     category: "object",
     description: "A list of discovered RDM devices.",
+    syntax: "[Function] RdmList",
+    examples: ["List RdmList"],
     docUrl: keywordDocUrl("rdmlist"),
   },
   {
@@ -1745,48 +2070,73 @@ const objectKeywordDocs: KeywordDoc[] = [
     category: "object",
     description:
       "An RDM parameter setting for remote device configuration.",
+    syntax: "[Function] RdmSetParameter [name]",
+    examples: ["List RdmSetParameter"],
     docUrl: keywordDocUrl("rdmsetparameter"),
   },
   {
     name: "RdmSetpatch",
     category: "object",
     description: "An RDM patch setting for remote device addressing.",
+    syntax: "[Function] RdmSetpatch [value]",
+    examples: ["List RdmSetpatch"],
     docUrl: keywordDocUrl("rdmsetpatch"),
   },
   {
     name: "RdmUnmatch",
     category: "object",
     description: "RDM unmatching of previously matched devices.",
+    syntax: "[Function] RdmUnmatch",
+    examples: ["List RdmUnmatch"],
     docUrl: keywordDocUrl("rdmunmatch"),
   },
   {
     name: "Remote",
     category: "object",
     description: "A remote console configuration for network control.",
+    syntax: "[Function] Remote [name]",
+    examples: ["List Remote"],
     docUrl: keywordDocUrl("remote"),
   },
   {
     name: "Root",
     category: "object",
     description: "The root object of the console's object hierarchy.",
+    syntax: "[Function] Root",
+    examples: ["List Root"],
     docUrl: keywordDocUrl("root"),
   },
   {
     name: "Screen",
     category: "object",
     description: "A display screen configuration on the console.",
+    syntax: "[Function] Screen [number]",
+    examples: [
+      "Store Screen 2",
+      "Edit Screen 2",
+    ],
     docUrl: keywordDocUrl("screen"),
   },
   {
     name: "SearchResult",
     category: "object",
     description: "A result from a search operation within the show data.",
+    syntax: "[Function] SearchResult [number]",
+    examples: [
+      "Search \"Spot\"",
+      "List SearchResult",
+    ],
     docUrl: keywordDocUrl("searchresult"),
   },
   {
     name: "Selection",
     category: "object",
     description: "The current fixture selection state.",
+    syntax: "[Function] Selection",
+    examples: [
+      "Store Selection 1",
+      "List Selection",
+    ],
     docUrl: keywordDocUrl("selection"),
   },
   {
@@ -1794,12 +2144,16 @@ const objectKeywordDocs: KeywordDoc[] = [
     category: "object",
     description:
       "A hostname configuration object for network identification.",
+    syntax: "[Function] SetHostname [name]",
+    examples: ["Set SetHostname \"FOH-MA2\""],
     docUrl: keywordDocUrl("sethostname"),
   },
   {
     name: "SetNetworkSpeed",
     category: "object",
     description: "A network speed configuration object.",
+    syntax: "[Function] SetNetworkSpeed [value]",
+    examples: ["Set SetNetworkSpeed 1000"],
     docUrl: keywordDocUrl("setnetworkspeed"),
   },
   {
@@ -1807,30 +2161,43 @@ const objectKeywordDocs: KeywordDoc[] = [
     category: "object",
     description:
       "A special master fader for global parameters like grand master or sound.",
+    syntax: "[Function] SpecialMaster [number]",
+    examples: ["Assign SpecialMaster 2 At Executor 5.1"],
     docUrl: keywordDocUrl("specialmaster"),
   },
   {
     name: "Surface",
     category: "object",
     description: "A virtual screen surface for multi-display setups.",
+    syntax: "[Function] Surface [number]",
+    examples: ["List Surface 1"],
     docUrl: keywordDocUrl("surface"),
   },
   {
     name: "Telnet",
     category: "object",
     description: "A telnet connection interface for remote command input.",
+    syntax: "[Function] Telnet [name]",
+    examples: ["List Telnet"],
     docUrl: keywordDocUrl("telnet"),
   },
   {
     name: "TimecodeSlot",
     category: "object",
     description: "A timecode slot for time-based show control.",
+    syntax: "[Function] TimecodeSlot [number]",
+    examples: ["Store TimecodeSlot 1 Timecode 1"],
     docUrl: keywordDocUrl("timecodeslot"),
   },
   {
     name: "User",
     category: "object",
     description: "A console user account with associated permissions.",
+    syntax: "[Function] User [name]",
+    examples: [
+      "Login \"Admin\" \"admin\"",
+      "List User",
+    ],
     docUrl: keywordDocUrl("user"),
   },
   {
@@ -1838,24 +2205,32 @@ const objectKeywordDocs: KeywordDoc[] = [
     category: "object",
     description:
       "A user profile defining personal preferences and access rights.",
+    syntax: "[Function] UserProfile [name]",
+    examples: ["List UserProfile"],
     docUrl: keywordDocUrl("userprofile"),
   },
   {
     name: "Value",
     category: "object",
     description: "A stored value object for attribute data.",
+    syntax: "[Function] Value [number]",
+    examples: ["List Value 1"],
     docUrl: keywordDocUrl("value"),
   },
   {
     name: "ViewButton",
     category: "object",
     description: "A button assigned to recall a specific view layout.",
+    syntax: "[Function] ViewButton [number]",
+    examples: ["Assign View 3 At ViewButton 1"],
     docUrl: keywordDocUrl("viewbutton"),
   },
   {
     name: "ViewPage",
     category: "object",
     description: "A page of view buttons.",
+    syntax: "[Function] ViewPage [number]",
+    examples: ["List ViewPage 1"],
     docUrl: keywordDocUrl("viewpage"),
   },
 ];
