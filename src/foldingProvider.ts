@@ -22,12 +22,6 @@ export class GMA2FoldingRangeProvider implements vscode.FoldingRangeProvider {
       }
     }
 
-    for (const block of analysis.blocks) {
-      if (block.endLine !== null && block.endLine > block.startLine) {
-        ranges.push(new vscode.FoldingRange(block.startLine, block.endLine));
-      }
-    }
-
     return ranges;
   }
 }

@@ -10,7 +10,6 @@
     { "include": "#object-keywords" },
     { "include": "#helping-keywords" },
     { "include": "#option-flags" },
-    { "include": "#percent-literals" },
     { "include": "#numbers" },
     { "include": "#comparison-operators" },
     { "include": "#operators" }
@@ -192,14 +191,6 @@
         }
       ]
     },
-    "percent-literals": {
-      "patterns": [
-        {
-          "name": "constant.numeric.percent.gma2",
-          "match": "\\b\\d+%"
-        }
-      ]
-    },
     "numbers": {
       "patterns": [
         {
@@ -216,7 +207,7 @@
       "patterns": [
         {
           "name": "keyword.operator.comparison.gma2",
-          "match": "==|<>|>=|<=|[<>]"
+          "match": "==|>=|<=|[<>]"
         }
       ]
     },

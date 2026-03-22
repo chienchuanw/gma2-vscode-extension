@@ -36,23 +36,6 @@ export class GMA2DocumentSymbolProvider implements vscode.DocumentSymbolProvider
       );
     }
 
-    for (const block of analysis.blocks) {
-      if (block.endLine === null) {
-        continue;
-      }
-
-      const range = makeLineRange(document, block.startLine, block.endLine);
-      symbols.push(
-        new vscode.DocumentSymbol(
-          'If',
-          'Conditional block',
-          vscode.SymbolKind.Struct,
-          range,
-          makeLineRange(document, block.startLine, block.startLine)
-        )
-      );
-    }
-
     for (const variable of analysis.variables) {
       const range = makeLineRange(document, variable.declarationLine, variable.declarationLine);
       symbols.push(

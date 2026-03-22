@@ -3,7 +3,6 @@ export enum TokenType {
   Variable = 'Variable',
   String = 'String',
   Number = 'Number',
-  Percent = 'Percent',
   Operator = 'Operator',
   ComparisonOperator = 'ComparisonOperator',
   OptionFlag = 'OptionFlag',

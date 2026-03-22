@@ -82,12 +82,6 @@ export function tokenizeLine(text: string): Token[] {
       continue;
     }
 
-    if (ch === '<' && i + 1 < text.length && text[i + 1] === '>') {
-      i += 2;
-      tokens.push({ type: TokenType.ComparisonOperator, value: text.slice(start, i), start, end: i });
-      continue;
-    }
-
     if ((ch === '>' || ch === '<') && i + 1 < text.length && text[i + 1] === '=') {
       i += 2;
       tokens.push({ type: TokenType.ComparisonOperator, value: text.slice(start, i), start, end: i });
@@ -138,12 +132,7 @@ export function tokenizeLine(text: string): Token[] {
         }
       }
 
-      if (i < text.length && text[i] === '%') {
-        i += 1;
-        tokens.push({ type: TokenType.Percent, value: text.slice(start, i), start, end: i });
-      } else {
-        tokens.push({ type: TokenType.Number, value: text.slice(start, i), start, end: i });
-      }
+      tokens.push({ type: TokenType.Number, value: text.slice(start, i), start, end: i });
       continue;
     }
 

@@ -13,9 +13,6 @@ import {
 import { tokenizeLine } from './lexer';
 import { classifyLine } from './lineParser';
 
-const IF_PATTERN = /^\s*If\b/i;
-const ENDIF_PATTERN = /^\s*EndIf\b/i;
-
 function normalizeVariableName(value: string): string {
   return value.startsWith('$') ? value.slice(1) : value;
 }
@@ -29,11 +26,6 @@ function extractSectionTitle(text: string): string {
 
 function isUnclosedString(token: Token): boolean {
   return token.type === TokenType.String && token.value.startsWith('"') && !token.value.endsWith('"');
-}
-
-function firstNonWhitespaceColumn(text: string): number {
-  const index = text.search(/\S/);
-  return index === -1 ? 0 : index;
 }
 
 function findLastNonEmptyLine(lines: string[], from: number, to: number): number {
@@ -74,7 +66,6 @@ export function analyzeDocument(lines: string[]): DocumentAnalysis {
   const variableReferences: VariableReference[] = [];
   const diagnosticHints: DiagnosticHint[] = [];
 
-  const ifStack: number[] = [];
   let currentSectionHeaderLine: number | null = null;
   let currentSectionTitle = '';
 
@@ -96,24 +87,6 @@ export function analyzeDocument(lines: string[]): DocumentAnalysis {
 
       currentSectionHeaderLine = lineNumber;
       currentSectionTitle = extractSectionTitle(rawText);
-    }
-
-    if (IF_PATTERN.test(rawText)) {
-      blocks.push({ startLine: lineNumber, endLine: null });
-      ifStack.push(blocks.length - 1);
-    } else if (ENDIF_PATTERN.test(rawText)) {
-      const blockIndex = ifStack.pop();
-      if (blockIndex === undefined) {
-        diagnosticHints.push({
-          line: lineNumber,
-          start: firstNonWhitespaceColumn(rawText),
-          end: rawText.length,
-          message: 'Unmatched EndIf without a corresponding If.',
-          severity: 'warning'
-        });
-      } else {
-        blocks[blockIndex].endLine = lineNumber;
-      }
     }
 
     const declarationVariableToken =
@@ -171,18 +144,6 @@ export function analyzeDocument(lines: string[]): DocumentAnalysis {
       startLine: currentSectionHeaderLine,
       endLine: finalSectionEnd,
       title: currentSectionTitle
-    });
-  }
-
-  for (const blockIndex of ifStack) {
-    const block = blocks[blockIndex];
-    const text = lines[block.startLine] ?? '';
-    diagnosticHints.push({
-      line: block.startLine,
-      start: firstNonWhitespaceColumn(text),
-      end: text.length,
-      message: 'Unmatched If without a corresponding EndIf.',
-      severity: 'warning'
     });
   }
 

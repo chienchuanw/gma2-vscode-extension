@@ -20,7 +20,9 @@ This extension brings first-class editing support for `.gma2` command script fil
 - **Hover documentation** -- Hover over any recognized keyword to display its description, syntax pattern, usage examples, and a direct link to the official MA Lighting documentation.
 - **Keyword auto-completion** -- IntelliSense suggestions for all 304 keywords with category-aware icons. After typing a function keyword such as `Store`, object keywords like `Cue`, `Sequence`, and `Preset` are automatically prioritized in the suggestion list.
 - **Snippet templates** -- 12 built-in code snippets for common grandMA2 programming patterns. Type a short prefix and press Tab to expand a full command structure with editable placeholders.
-- **Code folding** -- Collapsible regions for comment-delimited sections (lines starting with `# ----` or similar separator patterns) and `If`/`EndIf` conditional blocks, including nested structures.
+- **Bracket condition highlighting** -- Conditional expressions using the `[$var == "value"]` bracket syntax are recognized and scoped, including comparison operators (`==`, `>=`, `<=`, `>`, `<`).
+- **Option flag highlighting** -- Command option flags such as `/merge`, `/overwrite`, and `/noconfirm` are recognized as distinct tokens.
+- **Code folding** -- Collapsible regions for comment-delimited sections (lines starting with `# ----` or similar separator patterns).
 
 ## Hover Documentation
 
@@ -70,7 +72,7 @@ The extension ships with 12 snippet templates covering the most common grandMA2 
 |---|---|---|---|
 | `storecue` | Store Cue | `Store Cue {number} "{name}"` | Store a cue into the active sequence with a descriptive label. |
 | `selthru` | Select Fixture Thru | `Select Fixture {first} Thru {last}` | Select a contiguous range of fixtures by fixture ID. |
-| `ifendif` | If / EndIf Block | `If ${variable}`<br>`  {command}`<br>`EndIf` | Scaffold a conditional macro block with variable evaluation. |
+| `condition` | Bracket Condition | `[${variable} == "{value}"] {command}` | Single-line conditional execution using the grandMA2 bracket syntax. |
 | `setvar` | Set Variable | `SetVar ${name} = {value}` | Declare or update a global show variable. |
 | `assignexec` | Assign to Executor | `Assign Sequence {seq} At Executor {exec}` | Assign a sequence to a physical or virtual executor for playback. |
 | `section` | Section Header | `# ---- {Section Name} ----` | Insert a comment-based section divider for script organization. Also serves as a fold point for the folding provider. |
@@ -126,12 +128,10 @@ Assign Sequence 1 At Executor 1
 Go
 Goto Cue 3
 
-# Variable-driven macro logic
+# Variable-driven conditional execution
 SetVar $sceneIndex = 1
-If $sceneIndex And Fixture 1
-  Select Group 1
-  Goto Cue $sceneIndex
-EndIf
+[$sceneIndex >= 1] Select Group 1
+[$sceneIndex >= 1] Goto Cue $sceneIndex
 ```
 
 ## Development
@@ -169,7 +169,7 @@ gma2-vscode-extension/
     extension.ts            # Extension entry point; registers all providers
     hoverProvider.ts        # HoverProvider for keyword tooltips
     completionProvider.ts   # CompletionItemProvider for keyword IntelliSense
-    foldingProvider.ts      # FoldingRangeProvider for sections and If/EndIf
+    foldingProvider.ts      # FoldingRangeProvider for comment-delimited sections
     keywordDocs.ts          # Keyword documentation database (304 entries)
   snippets/
     gma2.json               # Snippet templates for common command patterns

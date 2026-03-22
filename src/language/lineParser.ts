@@ -38,24 +38,6 @@ export function classifyLine(tokens: Token[], lineNumber: number, rawText: strin
   if (firstKeywordToken) {
     const keyword = firstKeywordToken.value.toLowerCase();
 
-    if (keyword === 'if') {
-      return {
-        lineNumber,
-        lineType: LineType.ConditionalStart,
-        tokens,
-        rawText
-      };
-    }
-
-    if (keyword === 'endif') {
-      return {
-        lineNumber,
-        lineType: LineType.ConditionalEnd,
-        tokens,
-        rawText
-      };
-    }
-
     if (VARIABLE_DECLARATION_KEYWORDS.has(keyword)) {
       return {
         lineNumber,

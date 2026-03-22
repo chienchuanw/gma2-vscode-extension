@@ -13,14 +13,12 @@
     ],
     "description": "Select a range of fixtures"
   },
-  "If EndIf Block": {
-    "prefix": "ifendif",
+  "Bracket Condition": {
+    "prefix": "condition",
     "body": [
-      "If \\$${1:variable}",
-      "\t${2:command}",
-      "EndIf"
+      "[\\$${1:variable} == \"${2:value}\"] ${3:command}"
     ],
-    "description": "Conditional block with If and EndIf"
+    "description": "Single-line conditional execution using bracket syntax"
   },
   "Set Variable": {
     "prefix": "setvar",

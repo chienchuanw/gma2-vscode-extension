@@ -200,9 +200,9 @@ const functionKeywordDocs: KeywordDoc[] = [
   {
     name: "If",
     category: "function",
-    description: "Conditional execution in macros.",
-    syntax: "If [condition]",
-    examples: ["If $myVar = 1"],
+    description: "Filters or deselects fixtures based on entered criteria. Not a multi-line conditional block. For conditional command execution, use bracket syntax: [$var == \"value\"] Command.",
+    syntax: "If [selection]",
+    examples: ["If Fixture 1 Thru 5", "If Group 2"],
     docUrl: keywordDocUrl("if"),
   },
   {
@@ -2303,9 +2303,9 @@ const helpingKeywordDocs: KeywordDoc[] = [
   {
     name: "EndIf",
     category: "helping",
-    description: "Ends a conditional block in macros.",
+    description: "Closes an inline If clause used within command syntax. Does not terminate a script block.",
     syntax: "EndIf",
-    examples: ["EndIf"],
+    examples: ["Store Cue 1 If Fixture 1 EndIf"],
     docUrl: keywordDocUrl("endif"),
   },
   {
