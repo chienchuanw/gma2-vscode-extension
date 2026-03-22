@@ -18,6 +18,9 @@ This extension brings first-class editing support for `.gma2` command script fil
 - **Operator recognition** -- Arithmetic, logical, and command-chaining operators (`+`, `-`, `*`, `/`, `@`, `;`) are highlighted.
 - **Case-insensitive matching** -- All keywords are matched regardless of case, consistent with grandMA2 console behavior.
 - **Hover documentation** -- Hover over any recognized keyword to display its description, syntax pattern, usage examples, and a direct link to the official MA Lighting documentation.
+- **Keyword auto-completion** -- IntelliSense suggestions for all 304 keywords with category-aware icons. After typing a function keyword such as `Store`, object keywords like `Cue`, `Sequence`, and `Preset` are automatically prioritized in the suggestion list.
+- **Snippet templates** -- 12 built-in code snippets for common grandMA2 programming patterns. Type a short prefix and press Tab to expand a full command structure with editable placeholders.
+- **Code folding** -- Collapsible regions for comment-delimited sections (lines starting with `# ----` or similar separator patterns) and `If`/`EndIf` conditional blocks, including nested structures.
 
 ## Hover Documentation
 
@@ -58,6 +61,27 @@ Addressable objects within the grandMA2 show file and console architecture.
 Modifiers, range selectors, and control flow tokens used to qualify and chain commands.
 
 `Thru`, `At`, `Please`, `And`, `Or`, `If`, `EndIf`, `Next`, `Previous`, `SetVar`, `AddVar`, `Full`, `Zero`, `Default`, and 23 more.
+
+## Snippet Templates
+
+The extension ships with 12 snippet templates covering the most common grandMA2 command patterns. Type the prefix in a `.gma2` file and press `Tab` to expand the snippet. Tab stops (`$1`, `$2`, ...) let you jump between editable placeholders with the Tab key.
+
+| Prefix | Name | Expands To | Description |
+|---|---|---|---|
+| `storecue` | Store Cue | `Store Cue {number} "{name}"` | Store a cue into the active sequence with a descriptive label. |
+| `selthru` | Select Fixture Thru | `Select Fixture {first} Thru {last}` | Select a contiguous range of fixtures by fixture ID. |
+| `ifendif` | If / EndIf Block | `If ${variable}`<br>`  {command}`<br>`EndIf` | Scaffold a conditional macro block with variable evaluation. |
+| `setvar` | Set Variable | `SetVar ${name} = {value}` | Declare or update a global show variable. |
+| `assignexec` | Assign to Executor | `Assign Sequence {seq} At Executor {exec}` | Assign a sequence to a physical or virtual executor for playback. |
+| `section` | Section Header | `# ---- {Section Name} ----` | Insert a comment-based section divider for script organization. Also serves as a fold point for the folding provider. |
+| `cuelist` | Cue List | `Store Cue {1} "{First Look}"`<br>`Store Cue {2} "{Second Look}"`<br>`Store Cue {3} "{Third Look}"`<br>`Go` | Scaffold a short cue sequence with three labeled cues and a Go command to start playback. |
+| `fixat` | Fixture At Value | `Fixture {number} At {value}` | Set a single fixture to a specific intensity or attribute value. |
+| `copyat` | Copy Object | `Copy {Sequence} {source} At {Sequence} {target}` | Duplicate a show object (sequence, cue, group, etc.) to a new pool location. |
+| `labelobj` | Label Object | `Label {Cue} {number} "{name}"` | Assign a human-readable label to any addressable show object. |
+| `gotocue` | Goto Cue | `Goto Cue {number}` | Jump playback directly to a specific cue number without running intermediate cues. |
+| `effectassign` | Effect Assignment | `Assign Effect {number} At Executor {exec}` | Assign a stored effect to an executor for live triggering. |
+
+Values shown in `{braces}` are tab-stop placeholders. After expanding a snippet, press Tab to advance through each placeholder and type the desired value.
 
 ## Installation
 
