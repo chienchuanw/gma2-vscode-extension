@@ -28,7 +28,7 @@ for (const [key, doc] of keywordDocs) {
  * Scans tokens backward from the cursor, skipping cue/fixture numbers,
  * to detect whether the most recent keyword token is a function keyword.
  */
-function isPrecededByFunctionKeyword(
+export function isPrecededByFunctionKeyword(
   document: vscode.TextDocument,
   position: vscode.Position
 ): boolean {
@@ -53,7 +53,7 @@ function isPrecededByFunctionKeyword(
   return false;
 }
 
-function buildCompletionItem(
+export function buildCompletionItem(
   doc: KeywordDoc,
   boostObjects: boolean
 ): vscode.CompletionItem {
