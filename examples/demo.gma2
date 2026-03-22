@@ -49,6 +49,28 @@ SetVar $myVariable = 100
 SetVar $scene_name = "Opening"
 AddVar $counter + 1
 
+# ---- Conditional Blocks ----
+If $myVariable
+  Goto Cue $myVariable
+EndIf
+
+# ---- Bracket Conditions ----
+[$scene_name == "Opening"] Go
+[$counter <> 0] Goto Cue 5
+
+# ---- Option Flags ----
+Store Cue 1 /merge
+Copy Sequence 1 At Sequence 2 /remove
+
+# ---- Percent Literals ----
+Fixture 1 At 50%
+Channel 1 At 100%
+
+# ---- Comparison Operators ----
+If $counter >= 10
+  Off Executor 1
+EndIf
+
 # ---- Numbers ----
 Cue 42
 Fade 2.5
