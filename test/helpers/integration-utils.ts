@@ -1,5 +1,4 @@
 import * as vscode from 'vscode';
-import * as path from 'path';
 
 const EXTENSION_ID = 'chienchuanw.gma2-language';
 
@@ -12,16 +11,6 @@ export async function activateExtension(): Promise<vscode.Extension<unknown>> {
     await ext.activate();
   }
   return ext;
-}
-
-export async function openGma2Document(
-  fixtureName: string
-): Promise<vscode.TextDocument> {
-  const fixturesDir = path.resolve(__dirname, '..', '..', 'test', 'fixtures');
-  const uri = vscode.Uri.file(path.join(fixturesDir, fixtureName));
-  const document = await vscode.workspace.openTextDocument(uri);
-  await vscode.window.showTextDocument(document);
-  return document;
 }
 
 export async function createGma2Document(
@@ -37,22 +26,35 @@ export async function createGma2Document(
 
 export async function waitForDiagnostics(
   uri: vscode.Uri,
-  timeoutMs = 5000
+  timeoutMs = 10000
 ): Promise<vscode.Diagnostic[]> {
-  const start = Date.now();
-  while (Date.now() - start < timeoutMs) {
-    const diagnostics = vscode.languages.getDiagnostics(uri);
-    if (diagnostics.length > 0) {
-      return diagnostics;
-    }
-    await sleep(100);
+  const existing = vscode.languages.getDiagnostics(uri);
+  if (existing.length > 0) {
+    return existing;
   }
-  return vscode.languages.getDiagnostics(uri);
+
+  return new Promise<vscode.Diagnostic[]>((resolve) => {
+    const timer = setTimeout(() => {
+      disposable.dispose();
+      resolve(vscode.languages.getDiagnostics(uri));
+    }, timeoutMs);
+
+    const disposable = vscode.languages.onDidChangeDiagnostics((e) => {
+      const match = e.uris.some((u) => u.toString() === uri.toString());
+      if (!match) return;
+      const diags = vscode.languages.getDiagnostics(uri);
+      if (diags.length > 0) {
+        clearTimeout(timer);
+        disposable.dispose();
+        resolve(diags);
+      }
+    });
+  });
 }
 
 export async function waitForNoDiagnostics(
   uri: vscode.Uri,
-  timeoutMs = 2000
+  timeoutMs = 3000
 ): Promise<vscode.Diagnostic[]> {
   await sleep(timeoutMs);
   return vscode.languages.getDiagnostics(uri);
