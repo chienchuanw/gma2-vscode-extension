@@ -56,6 +56,41 @@ describe('tokenizeLine', () => {
       const str = tokens.find((t) => t.type === TokenType.String);
       expect(str?.value).toBe('""');
     });
+
+    describe('escaped quotes', () => {
+      it('tokenizes a string with escaped quotes', () => {
+        const tokens = tokenizeLine('Label Cue 1 "Act I \\"Prologue\\""');
+        const str = tokens.find((t) => t.type === TokenType.String);
+        expect(str?.value).toBe('"Act I \\"Prologue\\""');
+      });
+
+      it('tokenizes a string with backslash not followed by quote', () => {
+        const tokens = tokenizeLine('Label Cue 1 "path\\\\to"');
+        const str = tokens.find((t) => t.type === TokenType.String);
+        expect(str?.value).toBe('"path\\\\to"');
+      });
+
+      it('tokenizes a string ending with escaped backslash before closing quote', () => {
+        const tokens = tokenizeLine('Label Cue 1 "trailing\\\\"');
+        const str = tokens.find((t) => t.type === TokenType.String);
+        expect(str?.value).toBe('"trailing\\\\"');
+        // The string should be closed (ends with unescaped ")
+        expect(str?.value.endsWith('"')).toBe(true);
+      });
+
+      it('tokenizes an unclosed string with trailing escaped quote', () => {
+        const tokens = tokenizeLine('Label Cue 1 "unclosed\\"');
+        const str = tokens.find((t) => t.type === TokenType.String);
+        expect(str?.type).toBe(TokenType.String);
+        expect(str?.value).toBe('"unclosed\\"');
+      });
+
+      it('simple strings without escapes still work', () => {
+        const tokens = tokenizeLine('Label Cue 1 "Hello World"');
+        const str = tokens.find((t) => t.type === TokenType.String);
+        expect(str?.value).toBe('"Hello World"');
+      });
+    });
   });
 
   describe('variables', () => {
