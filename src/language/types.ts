@@ -27,7 +27,6 @@ export enum LineType {
   SectionHeader = 'SectionHeader',
   Command = 'Command',
   ConditionalStart = 'ConditionalStart',
-  ConditionalEnd = 'ConditionalEnd',
   VariableDeclaration = 'VariableDeclaration',
   Other = 'Other'
 }
