@@ -11,14 +11,17 @@ This extension brings first-class editing support for `.gma2` command script fil
 ## Features
 
 - **Semantic keyword highlighting** -- Function keywords, object keywords, and helping keywords are each assigned distinct token scopes, giving you immediate visual separation between commands (`Store`, `Go`, `Select`), target objects (`Cue`, `Fixture`, `Executor`), and control flow helpers (`Thru`, `At`, `Please`).
-- **String literals** -- Double-quoted strings used in labels and naming operations are recognized and highlighted.
+- **String literals** -- Double-quoted strings used in labels and naming operations are recognized and highlighted. Backslash-escaped quotes (`\"`) inside strings are supported as a scripting convenience.
 - **Numeric values** -- Integer and decimal numbers for cue numbers, DMX values, fade times, and fixture addresses are highlighted.
 - **Variable references** -- Variables prefixed with `$` (e.g., `$showMode`, `$counter`) are identified and highlighted as distinct tokens.
 - **Comment support** -- Line comments beginning with `#` are supported for annotating command scripts.
 - **Operator recognition** -- Arithmetic, logical, and command-chaining operators (`+`, `-`, `*`, `/`, `@`, `;`) are highlighted.
 - **Case-insensitive matching** -- All keywords are matched regardless of case, consistent with grandMA2 console behavior.
 - **Hover documentation** -- Hover over any recognized keyword to display its description, syntax pattern, usage examples, and a direct link to the official MA Lighting documentation.
-- **Keyword auto-completion** -- IntelliSense suggestions for all 304 keywords with category-aware icons. After typing a function keyword such as `Store`, object keywords like `Cue`, `Sequence`, and `Preset` are automatically prioritized in the suggestion list.
+- **Keyword auto-completion** -- IntelliSense suggestions for all 304 keywords with category-aware icons. After typing a function keyword such as `Store`, object keywords like `Cue`, `Sequence`, and `Preset` are automatically prioritized in the suggestion list. Context detection works correctly even when quoted strings or variables appear between the function keyword and the cursor.
+- **Diagnostics** -- Real-time error and warning detection: unknown keywords with "did you mean?" suggestions, undefined variable references, unclosed string literals, and duplicate `Store Cue` number detection (all occurrences flagged with cross-references to other lines).
+- **Document symbols** -- Outline view showing comment-delimited sections and variable declarations for quick navigation within large scripts.
+- **Semantic tokens** -- Variable highlighting with visual distinction between declarations (`SetVar $name`) and references (`$name`).
 - **Snippet templates** -- 12 built-in code snippets for common grandMA2 programming patterns. Type a short prefix and press Tab to expand a full command structure with editable placeholders.
 - **Bracket condition highlighting** -- Conditional expressions using the `[$var == "value"]` bracket syntax are recognized and scoped, including comparison operators (`==`, `>=`, `<=`, `>`, `<`).
 - **Option flag highlighting** -- Command option flags such as `/merge`, `/overwrite`, and `/noconfirm` are recognized as distinct tokens.
@@ -161,23 +164,45 @@ pnpm run watch
 pnpm run package
 ```
 
+### Testing
+
+```bash
+pnpm run test:unit          # Unit tests (Vitest)
+pnpm run test:unit:watch    # Unit tests in watch mode
+pnpm run test:integration   # Integration tests against real VS Code
+pnpm run test               # Both unit and integration tests
+```
+
 ### Project Structure
 
 ```
 gma2-vscode-extension/
   src/
-    extension.ts            # Extension entry point; registers all providers
-    hoverProvider.ts        # HoverProvider for keyword tooltips
-    completionProvider.ts   # CompletionItemProvider for keyword IntelliSense
-    foldingProvider.ts      # FoldingRangeProvider for comment-delimited sections
-    keywordDocs.ts          # Keyword documentation database (304 entries)
-  snippets/
-    gma2.json               # Snippet templates for common command patterns
+    extension.ts              # Entry point; registers all providers on activation
+    hoverProvider.ts          # Hover tooltips for keyword documentation
+    completionProvider.ts     # IntelliSense with context-aware keyword boosting
+    diagnosticsProvider.ts    # Real-time diagnostics (unknown keywords, duplicates, etc.)
+    foldingProvider.ts        # Code folding for comment-delimited sections
+    symbolProvider.ts         # Document outline (sections and variables)
+    semanticTokenProvider.ts  # Variable declaration vs reference highlighting
+    keywordDocs.ts            # Keyword documentation database (304 entries)
+    language/
+      lexer.ts                # Tokenizer: text -> Token[] (with escape handling)
+      lineParser.ts           # Line classifier: tokens -> LineType
+      documentAnalyzer.ts     # Full-document analysis: sections, variables, hints
+      analysisCache.ts        # LRU cache for analysis results (20 entries)
+      types.ts                # Shared types (Token, LineType, DocumentAnalysis)
   syntaxes/
-    gma2.tmLanguage.json    # TextMate grammar for syntax highlighting
-  language-configuration.json
+    gma2.tmLanguage.json      # TextMate grammar for syntax highlighting
+  snippets/
+    gma2.json                 # 12 snippet templates for common patterns
+  test/
+    unit/                     # Vitest unit tests (mocked vscode module)
+    integration/              # Mocha tests against real VS Code instance
+    fixtures/                 # Sample .gma2 files for testing
+    helpers/                  # Test utilities and mocks
   examples/
-    demo.gma2               # Sample file demonstrating all syntax features
+    demo.gma2                 # Sample file demonstrating all syntax features
 ```
 
 ## About grandMA2
