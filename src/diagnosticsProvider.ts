@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import { analysisCache } from './language/analysisCache';
 import { keywordDocs } from './keywordDocs';
 import { LineType, TokenType } from './language/types';
+import type { LineAnalysis } from './language/types';
 
 function toSeverity(
   severity: 'error' | 'warning' | 'information'
@@ -110,40 +111,84 @@ function collectUndefinedVariableDiagnostics(
   return diagnostics;
 }
 
-function collectDuplicateCueDiagnostics(
-  document: vscode.TextDocument
-): vscode.Diagnostic[] {
-  const analysis = analysisCache.getOrAnalyze(document);
-  const diagnostics: vscode.Diagnostic[] = [];
-  const seenCues = new Set<string>();
+export function findDuplicateCues(lines: LineAnalysis[]): Array<{
+  lineNumber: number;
+  cueNumber: string;
+  start: number;
+  end: number;
+  otherLines: number[];
+}> {
   const storeCuePattern = /\bStore\s+Cue\s+(\d+(?:\.\d+)?)/i;
 
-  for (const line of analysis.lines) {
+  // Pass 1: collect all cue occurrences grouped by cue number
+  const cueOccurrences = new Map<string, Array<{ lineNumber: number; start: number; end: number }>>();
+
+  for (const line of lines) {
     const match = line.rawText.match(storeCuePattern);
     if (!match) {
       continue;
     }
 
     const cueNumber = match[1];
-    if (!seenCues.has(cueNumber)) {
-      seenCues.add(cueNumber);
-      continue;
-    }
-
     const cueStart = line.rawText.indexOf(cueNumber, match.index ?? 0);
     const start = cueStart >= 0 ? cueStart : 0;
     const end = start + cueNumber.length;
 
-    diagnostics.push(
-      new vscode.Diagnostic(
-        new vscode.Range(line.lineNumber, start, line.lineNumber, end),
-        `Duplicate cue number "${cueNumber}" in Store Cue command.`,
-        vscode.DiagnosticSeverity.Information
-      )
-    );
+    if (!cueOccurrences.has(cueNumber)) {
+      cueOccurrences.set(cueNumber, []);
+    }
+    cueOccurrences.get(cueNumber)!.push({ lineNumber: line.lineNumber, start, end });
   }
 
-  return diagnostics;
+  // Pass 2: emit results for cue numbers with more than one occurrence
+  const results: Array<{
+    lineNumber: number;
+    cueNumber: string;
+    start: number;
+    end: number;
+    otherLines: number[];
+  }> = [];
+
+  for (const [cueNumber, occurrences] of cueOccurrences) {
+    if (occurrences.length <= 1) {
+      continue;
+    }
+
+    for (const occurrence of occurrences) {
+      results.push({
+        lineNumber: occurrence.lineNumber,
+        cueNumber,
+        start: occurrence.start,
+        end: occurrence.end,
+        otherLines: occurrences
+          .filter((o) => o.lineNumber !== occurrence.lineNumber)
+          .map((o) => o.lineNumber),
+      });
+    }
+  }
+
+  return results;
+}
+
+function collectDuplicateCueDiagnostics(
+  document: vscode.TextDocument
+): vscode.Diagnostic[] {
+  const analysis = analysisCache.getOrAnalyze(document);
+  const duplicates = findDuplicateCues(analysis.lines);
+
+  return duplicates.map((dup) => {
+    const otherLinesDisplay = dup.otherLines.map((l) => l + 1);
+    const lineRef =
+      otherLinesDisplay.length === 1
+        ? `line ${otherLinesDisplay[0]}`
+        : `lines ${otherLinesDisplay.join(', ')}`;
+
+    return new vscode.Diagnostic(
+      new vscode.Range(dup.lineNumber, dup.start, dup.lineNumber, dup.end),
+      `Duplicate cue number "${dup.cueNumber}" (also on ${lineRef})`,
+      vscode.DiagnosticSeverity.Information
+    );
+  });
 }
 
 function collectHintDiagnostics(document: vscode.TextDocument): vscode.Diagnostic[] {
