@@ -1,5 +1,7 @@
 import * as vscode from 'vscode';
 import { keywordDocs, KeywordDoc } from './keywordDocs';
+import { tokenizeLine } from './language/lexer';
+import { TokenType } from './language/types';
 
 const CATEGORY_KIND_MAP: Record<string, vscode.CompletionItemKind> = {
   function: vscode.CompletionItemKind.Function,
@@ -34,20 +36,28 @@ export function isPrecededByFunctionKeyword(
 ): boolean {
   const lineText = document.lineAt(position.line).text;
   const textBeforeCursor = lineText.substring(0, position.character).trimEnd();
-  const tokens = textBeforeCursor.split(/\s+/);
+  const tokens = tokenizeLine(textBeforeCursor).filter(
+    (t) => t.type !== TokenType.Whitespace
+  );
 
   if (tokens.length === 0) {
     return false;
   }
 
   for (let i = tokens.length - 1; i >= 0; i--) {
-    const token = tokens[i].toLowerCase();
-    if (functionKeywordNames.has(token)) {
-      return true;
+    const token = tokens[i];
+    if (token.type === TokenType.Keyword) {
+      return functionKeywordNames.has(token.value.toLowerCase());
     }
-    if (!/^\d+(\.\d+)?$/.test(tokens[i])) {
-      return false;
+    if (
+      token.type === TokenType.Number ||
+      token.type === TokenType.String ||
+      token.type === TokenType.Variable ||
+      token.type === TokenType.Operator
+    ) {
+      continue;
     }
+    return false;
   }
 
   return false;
