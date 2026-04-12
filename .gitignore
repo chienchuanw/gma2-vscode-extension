@@ -1,3 +1,4 @@
+# harness
 .claude/
 .codex/
 .opencode/
@@ -11,3 +12,6 @@ out/
 .vscode-test/
 coverage/
 *.vsix
+
+# Claude related
+CLAUDE.md
