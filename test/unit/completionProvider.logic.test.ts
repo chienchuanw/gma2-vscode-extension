@@ -35,6 +35,21 @@ describe('isPrecededByFunctionKeyword', () => {
     const doc = createMockDocument(['Store Cue ']);
     expect(isPrecededByFunctionKeyword(doc as never, mockPosition(0, 10) as never)).toBe(false);
   });
+
+  it('returns true when function keyword precedes cursor with quoted string', () => {
+    const doc = createMockDocument(['Store "My Cue" ']);
+    expect(isPrecededByFunctionKeyword(doc as never, mockPosition(0, 16) as never)).toBe(true);
+  });
+
+  it('returns true when function keyword is followed by number and quoted string', () => {
+    const doc = createMockDocument(['Store 1 "Label" ']);
+    expect(isPrecededByFunctionKeyword(doc as never, mockPosition(0, 17) as never)).toBe(true);
+  });
+
+  it('returns false when object keyword is between function keyword and cursor', () => {
+    const doc = createMockDocument(['Label Cue 1 "name" ']);
+    expect(isPrecededByFunctionKeyword(doc as never, mockPosition(0, 20) as never)).toBe(false);
+  });
 });
 
 describe('buildCompletionItem', () => {
