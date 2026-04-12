@@ -1,12 +1,12 @@
 # Findings & Observations
 
-## Project Health (2026-04-12)
+## Project Health (2026-04-13)
 
-- **Tests:** 96 unit tests passing, 5 test files (lexer, lineParser, documentAnalyzer, keywordDocs, completionProvider logic)
+- **Tests:** 114 unit tests passing, 6 test files (lexer, lineParser, documentAnalyzer, keywordDocs, completionProvider, diagnosticsProvider)
 - **Build:** Compiles cleanly with esbuild
-- **Git:** Clean working tree on main, 20 commits of development history
+- **Git:** dev branch, issues #1-#4 resolved via PRs #12-#15
 - **CI:** GitHub Actions workflow configured for unit + integration tests
-- **Issues/PRs:** None open
+- **Issues/PRs:** Issues #5-#11 remain open (features, bugs, docs)
 
 ## Architecture Observations
 
@@ -25,16 +25,24 @@ The project was built incrementally in clear phases:
 4. Shared language core (lexer/parser/analyzer) + diagnostics + symbols + semantic tokens
 5. Tests + CI
 
+## Bug Fix Findings (2026-04-13)
+
+- **grandMA2 does NOT support escaped quotes** — strings run from `"` to the next `"` with no escape mechanism. The extension adds `\"` support as a scripting convenience (strictly additive).
+- **grandMA2 conditionals are single-line** — `[$var > 0] Command` syntax only. `If` is a fixture filter command, `EndIf` is its inline clause terminator. No multi-line conditional blocks exist.
+- **`isPrecededByFunctionKeyword` was bypassing the lexer** — using `split(/\s+/)` instead of `tokenizeLine()`, causing token boundary errors with quoted strings.
+- **Duplicate cue detection requires two passes** — a single-pass `Set`-based approach cannot retroactively flag the first occurrence.
+
 ## Potential Areas for Future Work
 
 - **Marketplace publishing:** Still at v0.0.1, no publisher configured in package.json
 - **Lint script:** No dedicated lint command (no ESLint/Biome configured)
 - **Coverage reporting:** @vitest/coverage-v8 is installed but coverage output didn't render in terminal — may need investigation
-- **Go-to-definition:** Could add definition provider for variables (declaration locations are already tracked)
-- **Rename support:** Variable rename refactoring (references already tracked by document analyzer)
-- **Code actions:** Quick fixes for diagnostics (e.g., "did you mean X?" for unknown keywords)
-- **Workspace symbol search:** Cross-file symbol search
-- **README project structure:** README lists an outdated project structure (missing newer files like diagnosticsProvider, symbolProvider, semanticTokenProvider, language/ directory)
+- **Go-to-definition:** Could add definition provider for variables (issue #5 — declaration locations already tracked)
+- **Rename support:** Variable rename refactoring (issue #5 — references already tracked by document analyzer)
+- **Fuzzy keyword matching:** Improve keyword suggestions with fuzzy matching (issue #7)
+- **Extension configuration:** Add user-configurable settings (issue #6)
+- **Analysis cache tests:** Unit tests for analysisCache (issue #8)
+- **Option flag word boundaries:** Fix option flag tokenization (issue #9)
 
 ## Resources
 - Official MA Lighting docs: https://help.malighting.com/

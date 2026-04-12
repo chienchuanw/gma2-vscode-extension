@@ -53,14 +53,25 @@ Observation — assessing project health and identifying next steps.
 - [x] Comprehensive README.md
 - **Status:** complete
 
+### Phase 6: Bug Fixes (Issues #1-#4) ✅
+- [x] Issue #1: Lexer handles escaped quotes (`\"`) in strings — lexer, documentAnalyzer, TextMate grammar updated
+- [x] Issue #2: Completion provider uses `tokenizeLine()` instead of naive `split(/\s+/)` — fixes object keyword boosting with quoted strings
+- [x] Issue #3: Duplicate cue detection flags all occurrences — two-pass algorithm with cross-line references
+- [x] Issue #4: Removed dead `ConditionalEnd` enum value — grandMA2 has no multi-line conditionals
+- [x] 18 new unit tests added (lexer: 5, documentAnalyzer: 2, completionProvider: 3, diagnosticsProvider: 8)
+- **Status:** complete (PRs #12-#15 merged to dev, 2026-04-13)
+
 ## Key Questions
 1. Is the extension published on the VS Code Marketplace yet? — No, still at v0.0.1
-2. Are there any open GitHub issues or PRs? — No, none found
+2. Are there any open GitHub issues or PRs? — Issues #1-#4 closed via merged PRs
 3. Are integration tests passing in CI? — Workflow exists, not verified locally
 
 ## Decisions Made
 | Decision | Rationale |
 |----------|-----------|
+| Support `\"` escapes despite console not having them | Extension is an offline scripting tool, not a live console — strictly additive |
+| Two-pass duplicate cue detection | Cannot retroactively flag first occurrence in single pass |
+| Remove ConditionalEnd rather than implement it | grandMA2 conditionals are single-line; no multi-line end construct exists |
 | Zero runtime dependencies | Extension only needs VS Code API |
 | esbuild over webpack | Faster builds, simpler config |
 | Vitest for unit + Mocha for integration | Vitest is fast for pure logic; Mocha required by @vscode/test-cli |
@@ -73,6 +84,6 @@ Observation — assessing project health and identifying next steps.
 | (none currently) | — | — |
 
 ## Notes
-- All 96 unit tests pass as of 2026-04-12
-- Working tree is clean (no uncommitted changes)
-- No open issues or PRs on GitHub
+- All 114 unit tests pass as of 2026-04-13
+- Issues #1-#4 resolved via PRs #12-#15 (merged to dev)
+- Remaining open issues: #5-#11 (features, bugs, docs)
