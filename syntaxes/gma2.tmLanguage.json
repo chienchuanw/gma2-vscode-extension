@@ -38,7 +38,13 @@
           "end": "\"",
           "endCaptures": {
             "0": { "name": "punctuation.definition.string.end.gma2" }
-          }
+          },
+          "patterns": [
+            {
+              "name": "constant.character.escape.gma2",
+              "match": "\\\\."
+            }
+          ]
         }
       ]
     },
