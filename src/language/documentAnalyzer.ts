@@ -25,7 +25,31 @@ function extractSectionTitle(text: string): string {
 }
 
 function isUnclosedString(token: Token): boolean {
-  return token.type === TokenType.String && token.value.startsWith('"') && !token.value.endsWith('"');
+  if (token.type !== TokenType.String || !token.value.startsWith('"')) {
+    return false;
+  }
+
+  if (!token.value.endsWith('"')) {
+    return true;
+  }
+
+  // A single `"` is an unclosed string (just the opening quote)
+  if (token.value.length === 1) {
+    return true;
+  }
+
+  // Count consecutive backslashes before the closing quote
+  let backslashCount = 0;
+  for (let i = token.value.length - 2; i >= 1; i -= 1) {
+    if (token.value[i] === '\\') {
+      backslashCount += 1;
+    } else {
+      break;
+    }
+  }
+
+  // If odd number of backslashes, the closing quote is escaped (unclosed)
+  return backslashCount % 2 !== 0;
 }
 
 function findLastNonEmptyLine(lines: string[], from: number, to: number): number {

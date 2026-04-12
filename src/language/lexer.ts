@@ -54,7 +54,11 @@ export function tokenizeLine(text: string): Token[] {
     if (ch === '"') {
       i += 1;
       while (i < text.length && text[i] !== '"') {
-        i += 1;
+        if (text[i] === '\\') {
+          i += 2;
+        } else {
+          i += 1;
+        }
       }
       if (i < text.length && text[i] === '"') {
         i += 1;
