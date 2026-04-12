@@ -151,6 +151,19 @@ describe('analyzeDocument', () => {
       expect(result.diagnosticHints).toHaveLength(0);
     });
 
+    it('does not flag strings with escaped quotes as unclosed', () => {
+      const lines = ['Label Cue 1 "Act I \\"Prologue\\""'];
+      const result = analyzeDocument(lines);
+      expect(result.diagnosticHints).toHaveLength(0);
+    });
+
+    it('detects unclosed string with trailing escaped quote', () => {
+      const lines = ['Label Cue 1 "unclosed\\"'];
+      const result = analyzeDocument(lines);
+      expect(result.diagnosticHints).toHaveLength(1);
+      expect(result.diagnosticHints[0].message).toBe('Unclosed string literal.');
+    });
+
     it('handles document with only comments', () => {
       const lines = [
         '# comment one',
