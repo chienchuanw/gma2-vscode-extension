@@ -179,6 +179,25 @@ export class Hover {
   ) {}
 }
 
+export class Location {
+  constructor(
+    public readonly uri: unknown,
+    public readonly range: Range
+  ) {}
+}
+
+export class WorkspaceEdit {
+  public readonly edits: Array<{ uri: unknown; range: Range; newText: string }> = [];
+
+  replace(uri: unknown, range: Range, newText: string): void {
+    this.edits.push({ uri, range, newText });
+  }
+
+  get size(): number {
+    return this.edits.length;
+  }
+}
+
 export class CancellationTokenSource {
   public token: CancellationToken = {
     isCancellationRequested: false,
@@ -193,6 +212,17 @@ export class CancellationTokenSource {
 export interface CancellationToken {
   isCancellationRequested: boolean;
   onCancellationRequested: (listener: () => void) => { dispose: () => void };
+}
+
+/** A never-cancelled token, convenient for invoking providers in unit tests. */
+export const noToken: CancellationToken = {
+  isCancellationRequested: false,
+  onCancellationRequested: () => ({ dispose: () => {} }),
+};
+
+/** Build a Position, for passing cursor locations to providers in unit tests. */
+export function pos(line: number, character: number): Position {
+  return new Position(line, character);
 }
 
 export interface TextLine {
@@ -289,6 +319,8 @@ export const languages = {
   registerFoldingRangeProvider: () => ({ dispose: () => {} }),
   registerDocumentSymbolProvider: () => ({ dispose: () => {} }),
   registerDocumentSemanticTokensProvider: () => ({ dispose: () => {} }),
+  registerDefinitionProvider: () => ({ dispose: () => {} }),
+  registerRenameProvider: () => ({ dispose: () => {} }),
   getDiagnostics: () => [],
 };
 

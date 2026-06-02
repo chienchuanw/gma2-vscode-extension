@@ -62,6 +62,17 @@ export interface VariableReference {
   end: number;
 }
 
+/**
+ * A single place a variable appears — either its declaration or a reference.
+ * Columns cover the whole `$name` token, including the leading `$`.
+ */
+export interface VariableOccurrence {
+  line: number;
+  start: number;
+  end: number;
+  isDeclaration: boolean;
+}
+
 export interface DiagnosticHint {
   line: number;
   start: number;

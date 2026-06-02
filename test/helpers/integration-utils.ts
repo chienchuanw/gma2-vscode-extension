@@ -24,6 +24,26 @@ export async function createGma2Document(
   return document;
 }
 
+let uniqueDocCounter = 0;
+
+/**
+ * Open a gma2 document under a unique untitled URI so the shared analysis cache
+ * (keyed by `uri:version`) cannot return a stale analysis from a previous test.
+ * `createGma2Document` reuses `Untitled-1`, which collides across tests once
+ * editors are closed — fine for loose assertions, but not for position-precise
+ * checks like go-to-definition and rename.
+ */
+export async function createUniqueGma2Document(
+  content: string
+): Promise<vscode.TextDocument> {
+  const uri = vscode.Uri.parse(`untitled:gma2-test-${++uniqueDocCounter}.gma2`);
+  const opened = await vscode.workspace.openTextDocument(uri);
+  const document = await vscode.languages.setTextDocumentLanguage(opened, 'gma2');
+  const editor = await vscode.window.showTextDocument(document);
+  await editor.edit((builder) => builder.insert(new vscode.Position(0, 0), content));
+  return document;
+}
+
 export async function waitForDiagnostics(
   uri: vscode.Uri,
   timeoutMs = 10000
