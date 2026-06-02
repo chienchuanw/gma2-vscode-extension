@@ -15,7 +15,12 @@ export function normalizeName(name: string): string {
 /**
  * Find the `$variable` token at a given position, if any. The position is
  * considered "on" the token when it falls anywhere within `[start, end]`
- * (inclusive of both edges, so clicks at either boundary resolve).
+ * (inclusive of both edges, so a caret resting at the end of a variable still
+ * resolves — matching VS Code's word-range behavior for F2/go-to-definition).
+ *
+ * For the unusual case of directly adjacent tokens (e.g. `$a$b`, where one
+ * token's `end` equals the next token's `start`), a caret on the shared
+ * boundary resolves to the left token, since `find` returns the first match.
  */
 export function findVariableTokenAtPosition(
   analysis: DocumentAnalysis,
@@ -97,6 +102,10 @@ export function findDeclaration(
 /**
  * Every occurrence (declarations and references) of a variable name across the
  * document, matched case-insensitively. Used to rename all sites at once.
+ *
+ * Because matching is case-insensitive, declarations that differ only in case
+ * (e.g. `$Counter` and `$counter`) are treated as the same variable and merged
+ * into one occurrence set — consistent with how grandMA2 resolves variables.
  */
 export function findVariableOccurrences(
   analysis: DocumentAnalysis,
