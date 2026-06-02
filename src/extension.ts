@@ -8,6 +8,8 @@ import {
   GMA2SemanticTokenProvider,
   SEMANTIC_TOKEN_LEGEND
 } from './semanticTokenProvider';
+import { GMA2DefinitionProvider } from './definitionProvider';
+import { GMA2RenameProvider } from './renameProvider';
 
 export function activate(context: vscode.ExtensionContext): void {
   const selector: vscode.DocumentSelector = { language: 'gma2' };
@@ -21,7 +23,9 @@ export function activate(context: vscode.ExtensionContext): void {
       selector,
       new GMA2SemanticTokenProvider(),
       SEMANTIC_TOKEN_LEGEND
-    )
+    ),
+    vscode.languages.registerDefinitionProvider(selector, new GMA2DefinitionProvider()),
+    vscode.languages.registerRenameProvider(selector, new GMA2RenameProvider())
   );
 
   setupDiagnostics(context, selector);

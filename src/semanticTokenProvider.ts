@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import { analysisCache } from './language/analysisCache';
 import { TokenType } from './language/types';
+import { normalizeName } from './language/variableResolver';
 
 const tokenTypes = ['variable'];
 const tokenModifiers = ['declaration', 'readonly'];
@@ -22,7 +23,9 @@ function pushDeclarationToken(
   }
 
   const declarationToken = line.tokens.find(
-    (token) => token.type === TokenType.Variable && token.value.slice(1).toLowerCase() === variableName.toLowerCase()
+    (token) =>
+      token.type === TokenType.Variable &&
+      normalizeName(token.value) === normalizeName(variableName)
   );
 
   if (!declarationToken) {
