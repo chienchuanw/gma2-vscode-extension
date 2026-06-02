@@ -22,6 +22,8 @@ This extension brings first-class editing support for `.gma2` command script fil
 - **Diagnostics** -- Real-time error and warning detection: unknown keywords with "did you mean?" suggestions, undefined variable references, unclosed string literals, and duplicate `Store Cue` number detection (all occurrences flagged with cross-references to other lines).
 - **Document symbols** -- Outline view showing comment-delimited sections and variable declarations for quick navigation within large scripts.
 - **Semantic tokens** -- Variable highlighting with visual distinction between declarations (`SetVar $name`) and references (`$name`).
+- **Go-to-Definition** -- Ctrl/Cmd+Click a `$variable` to jump to its `SetVar`/`AddVar` declaration. Matching is case-insensitive, and undeclared variables are handled gracefully.
+- **Rename variables** -- Press F2 on any `$variable` to rename its declaration and every reference in the file at once. Renames are scoped to the current file.
 - **Snippet templates** -- 12 built-in code snippets for common grandMA2 programming patterns. Type a short prefix and press Tab to expand a full command structure with editable placeholders.
 - **Bracket condition highlighting** -- Conditional expressions using the `[$var == "value"]` bracket syntax are recognized and scoped, including comparison operators (`==`, `>=`, `<=`, `>`, `<`).
 - **Option flag highlighting** -- Command option flags such as `/merge`, `/overwrite`, and `/noconfirm` are recognized as distinct tokens.
