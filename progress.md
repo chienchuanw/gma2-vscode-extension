@@ -51,11 +51,38 @@
   - `test/unit/diagnosticsProvider.test.ts` — new file, 8 tests
   - `README.md` — updated features, project structure
 
+## Session: 2026-06-02
+
+### Variable Navigation — Issue #5 (Go-to-Definition & Rename)
+- **Status:** complete
+- **Started:** 2026-06-02
+
+- Actions taken:
+  - Followed the feature-dev workflow: explored the analysis pipeline, confirmed `DocumentAnalysis` already tracked variable declarations and references
+  - Built a shared, dependency-free `variableResolver.ts` and two thin providers (`GMA2DefinitionProvider`, `GMA2RenameProvider`), registered in `extension.ts`
+  - Wrote 33 unit tests + 6 integration tests; discovered and worked around an analysis-cache key collision in the integration harness (untitled docs reuse `Untitled-1:1`) via `createUniqueGma2Document`
+  - Ran two parallel code reviewers; applied DRY/convention fixes (reuse `normalizeName`, centralize `VariableOccurrence` in `types.ts`)
+  - Opened PR #16, ran an autonomous review round (verdict: approve), addressed non-blocking doc nits, rebase-merged to dev
+
+- Files added:
+  - `src/language/variableResolver.ts`, `src/definitionProvider.ts`, `src/renameProvider.ts`
+  - `test/unit/language/variableResolver.test.ts`, `test/unit/definitionProvider.test.ts`, `test/unit/renameProvider.test.ts`
+  - `test/integration/definitionProvider.test.ts`, `test/integration/renameProvider.test.ts`
+
+- Files modified:
+  - `src/extension.ts` — registered both providers
+  - `src/language/types.ts` — added `VariableOccurrence`
+  - `src/semanticTokenProvider.ts` — reuse `normalizeName` (DRY)
+  - `test/helpers/vscode-mock.ts` — added `Location`, `WorkspaceEdit`, `noToken`, `pos`, registration stubs
+  - `test/helpers/integration-utils.ts` — added `createUniqueGma2Document`
+
 ## Test Results
 | Test | Input | Expected | Actual | Status |
 |------|-------|----------|--------|--------|
 | Unit tests (2026-04-12) | `pnpm run test:unit` | 96 pass | 96 pass | pass |
 | Unit tests (2026-04-13) | `pnpm run test:unit` | 114 pass | 114 pass | pass |
+| Unit tests (2026-06-02) | `pnpm run test:unit` | 147 pass | 147 pass | pass |
+| Integration tests (2026-06-02) | `pnpm run test:integration` | 27 pass | 27 pass | pass |
 
 ## 5-Question Reboot Check
 | Question | Answer |

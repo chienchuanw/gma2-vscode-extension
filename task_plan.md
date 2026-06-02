@@ -61,9 +61,17 @@ Observation — assessing project health and identifying next steps.
 - [x] 18 new unit tests added (lexer: 5, documentAnalyzer: 2, completionProvider: 3, diagnosticsProvider: 8)
 - **Status:** complete (PRs #12-#15 merged to dev, 2026-04-13)
 
+### Phase 7: Variable Navigation (Issue #5) ✅
+- [x] Issue #5: Go-to-Definition and Rename for `$variable` references
+- [x] New `src/language/variableResolver.ts` — shared, dependency-free position/occurrence helpers
+- [x] New `src/definitionProvider.ts` (`GMA2DefinitionProvider`) and `src/renameProvider.ts` (`GMA2RenameProvider`), registered in `extension.ts`
+- [x] `semanticTokenProvider.ts` refactored to reuse `normalizeName` (DRY); `VariableOccurrence` centralized in `types.ts`
+- [x] 33 new unit tests + 6 new integration tests (case-insensitive matching, undeclared variables, invalid rename targets)
+- **Status:** complete (PR #16 merged to dev, 2026-06-02)
+
 ## Key Questions
 1. Is the extension published on the VS Code Marketplace yet? — No, still at v0.0.1
-2. Are there any open GitHub issues or PRs? — Issues #1-#4 closed via merged PRs
+2. Are there any open GitHub issues or PRs? — Issues #1-#5 closed via merged PRs; #6-#11 open
 3. Are integration tests passing in CI? — Workflow exists, not verified locally
 
 ## Decisions Made
@@ -84,6 +92,7 @@ Observation — assessing project health and identifying next steps.
 | (none currently) | — | — |
 
 ## Notes
-- All 114 unit tests pass as of 2026-04-13
+- All 147 unit tests + 27 integration tests pass as of 2026-06-02
 - Issues #1-#4 resolved via PRs #12-#15 (merged to dev)
-- Remaining open issues: #5-#11 (features, bugs, docs)
+- Issue #5 resolved via PR #16 (merged to dev)
+- Remaining open issues: #6-#11 (features, bugs, docs)
