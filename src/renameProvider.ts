@@ -60,6 +60,8 @@ export class GMA2RenameProvider implements vscode.RenameProvider {
     }
 
     const bareName = sanitizeNewName(newName);
+    // An undeclared variable still has reference occurrences; renaming those is
+    // intentional (unlike go-to-definition, which has no declaration to target).
     const occurrences = findVariableOccurrences(analysis, name);
     if (occurrences.length === 0) {
       return undefined;
