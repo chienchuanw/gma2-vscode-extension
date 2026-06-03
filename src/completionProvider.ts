@@ -63,6 +63,24 @@ export function isPrecededByFunctionKeyword(
   return false;
 }
 
+/**
+ * Object keywords are boosted only when context-aware sorting is enabled
+ * *and* the cursor follows a function keyword. The setting takes precedence —
+ * when off, boosting never applies regardless of context.
+ */
+export function resolveBoostObjects(
+  settingEnabled: boolean,
+  precededByFunctionKeyword: boolean
+): boolean {
+  return settingEnabled && precededByFunctionKeyword;
+}
+
+function boostObjectKeywordsEnabled(): boolean {
+  return vscode.workspace
+    .getConfiguration('gma2')
+    .get<boolean>('completion.boostObjectKeywords', true);
+}
+
 export function buildCompletionItem(
   doc: KeywordDoc,
   boostObjects: boolean
@@ -109,7 +127,10 @@ export class GMA2CompletionProvider implements vscode.CompletionItemProvider {
     _token: vscode.CancellationToken,
     _context: vscode.CompletionContext
   ): vscode.CompletionItem[] {
-    const boostObjects = isPrecededByFunctionKeyword(document, position);
+    const boostObjects = resolveBoostObjects(
+      boostObjectKeywordsEnabled(),
+      isPrecededByFunctionKeyword(document, position)
+    );
 
     const items: vscode.CompletionItem[] = [];
     for (const [, doc] of keywordDocs) {

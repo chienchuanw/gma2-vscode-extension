@@ -62,7 +62,32 @@
         "language": "gma2",
         "path": "./snippets/gma2.json"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "grandMA2",
+      "properties": {
+        "gma2.diagnostics.unknownKeywords": {
+          "type": "boolean",
+          "default": true,
+          "description": "Warn about unrecognized keywords, with a \"did you mean?\" suggestion."
+        },
+        "gma2.diagnostics.undefinedVariables": {
+          "type": "boolean",
+          "default": true,
+          "description": "Report references to variables that are not declared in the current file."
+        },
+        "gma2.diagnostics.duplicateCues": {
+          "type": "boolean",
+          "default": true,
+          "description": "Report duplicate \"Store Cue\" numbers within the current file."
+        },
+        "gma2.completion.boostObjectKeywords": {
+          "type": "boolean",
+          "default": true,
+          "description": "After a function keyword (e.g. Store), prioritize object keywords (Cue, Sequence, Preset) in the completion list."
+        }
+      }
+    }
   },
   "scripts": {
     "compile": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --sourcemap",

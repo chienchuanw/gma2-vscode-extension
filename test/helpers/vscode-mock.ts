@@ -329,6 +329,11 @@ export const workspace = {
   onDidOpenTextDocument: () => ({ dispose: () => {} }),
   onDidChangeTextDocument: () => ({ dispose: () => {} }),
   onDidCloseTextDocument: () => ({ dispose: () => {} }),
+  onDidChangeConfiguration: () => ({ dispose: () => {} }),
+  // Returns defaults, so source modules behave as if no settings were changed.
+  getConfiguration: (_section?: string) => ({
+    get: <T>(_key: string, defaultValue?: T): T => defaultValue as T,
+  }),
 };
 
 export const Uri = {
