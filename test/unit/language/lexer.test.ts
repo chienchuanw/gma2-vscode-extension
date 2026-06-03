@@ -205,6 +205,24 @@ describe('tokenizeLine', () => {
       const flag = tokens.find((t) => t.type === TokenType.OptionFlag);
       expect(flag?.value).toBe('/overwrite');
     });
+
+    it('tokenizes /noconfirm at the start of a line as an option flag', () => {
+      const tokens = tokenizeLine('/noconfirm');
+      const flag = tokens.find((t) => t.type === TokenType.OptionFlag);
+      expect(flag?.value).toBe('/noconfirm');
+    });
+
+    it('does not treat path segments inside a URL as option flags', () => {
+      const tokens = tokenizeLine('Label Cue 1 http://docs.malighting.com/page');
+      const flags = tokens.filter((t) => t.type === TokenType.OptionFlag);
+      expect(flags).toHaveLength(0);
+    });
+
+    it('does not treat a slash adjacent to a word as an option flag', () => {
+      const tokens = tokenizeLine('a/merge');
+      const flags = tokens.filter((t) => t.type === TokenType.OptionFlag);
+      expect(flags).toHaveLength(0);
+    });
   });
 
   describe('brackets', () => {
