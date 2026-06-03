@@ -1,7 +1,37 @@
 import { describe, it, expect } from 'vitest';
-import { findDuplicateCues } from '../../src/diagnosticsProvider';
+import { findDuplicateCues, findKeywordSuggestion } from '../../src/diagnosticsProvider';
 import { LineType, TokenType } from '../../src/language/types';
 import type { LineAnalysis } from '../../src/language/types';
+
+describe('findKeywordSuggestion', () => {
+  it('suggests Store for a single-edit deletion typo', () => {
+    expect(findKeywordSuggestion('Stor')).toBe('Store');
+  });
+
+  it('suggests Store for a transposition typo', () => {
+    expect(findKeywordSuggestion('Stoer')).toBe('Store');
+  });
+
+  it('suggests Store for a missing leading character', () => {
+    expect(findKeywordSuggestion('tore')).toBe('Store');
+  });
+
+  it('suggests Store for an extra character', () => {
+    expect(findKeywordSuggestion('Storee')).toBe('Store');
+  });
+
+  it('is case-insensitive', () => {
+    expect(findKeywordSuggestion('STOR')).toBe('Store');
+  });
+
+  it('returns undefined for a completely unrelated word', () => {
+    expect(findKeywordSuggestion('xyzqwplk')).toBeUndefined();
+  });
+
+  it('returns undefined for an empty token', () => {
+    expect(findKeywordSuggestion('')).toBeUndefined();
+  });
+});
 
 function makeLine(lineNumber: number, rawText: string): LineAnalysis {
   return {
