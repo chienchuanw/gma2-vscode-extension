@@ -17,17 +17,79 @@ function toSeverity(
   }
 }
 
-function findKeywordSuggestion(value: string): string | undefined {
+/** Levenshtein edit distance between two strings (brute-force DP, two rows). */
+function editDistance(a: string, b: string): number {
+  if (a.length === 0) {
+    return b.length;
+  }
+  if (b.length === 0) {
+    return a.length;
+  }
+
+  let previous = Array.from({ length: b.length + 1 }, (_, j) => j);
+  let current = new Array<number>(b.length + 1).fill(0);
+
+  for (let i = 1; i <= a.length; i += 1) {
+    current[0] = i;
+    for (let j = 1; j <= b.length; j += 1) {
+      const substitutionCost = a[i - 1] === b[j - 1] ? 0 : 1;
+      current[j] = Math.min(
+        previous[j] + 1, // deletion
+        current[j - 1] + 1, // insertion
+        previous[j - 1] + substitutionCost // substitution
+      );
+    }
+    [previous, current] = [current, previous];
+  }
+
+  return previous[b.length];
+}
+
+/** Edit-distance tolerance scaled to token length, so longer typos get more slack. */
+function suggestionThreshold(length: number): number {
+  if (length <= 4) {
+    return 1;
+  }
+  if (length <= 7) {
+    return 2;
+  }
+  return 3;
+}
+
+/**
+ * Suggest the closest known keyword to an unknown token using edit distance.
+ * Returns undefined when nothing is within the length-scaled threshold, so
+ * unrelated words produce no "did you mean?" noise. With only 304 keywords a
+ * brute-force scan is well within budget.
+ */
+export function findKeywordSuggestion(value: string): string | undefined {
   const lower = value.toLowerCase();
-  const prefix = lower.slice(0, 2);
+  if (lower.length === 0) {
+    return undefined;
+  }
+
+  const threshold = suggestionThreshold(lower.length);
+  let bestKeyword: string | undefined;
+  let bestDistance = Infinity;
 
   for (const keyword of keywordDocs.keys()) {
-    if (prefix.length >= 2 && keyword.startsWith(prefix)) {
-      return keywordDocs.get(keyword)?.name;
+    // A length gap alone can already exceed the threshold — skip those cheaply.
+    if (Math.abs(keyword.length - lower.length) > threshold) {
+      continue;
+    }
+
+    const distance = editDistance(lower, keyword);
+    if (distance < bestDistance) {
+      bestDistance = distance;
+      bestKeyword = keyword;
     }
   }
 
-  return undefined;
+  if (bestKeyword === undefined || bestDistance > threshold) {
+    return undefined;
+  }
+
+  return keywordDocs.get(bestKeyword)?.name;
 }
 
 function collectUnknownKeywordDiagnostics(
