@@ -98,7 +98,12 @@ export function tokenizeLine(text: string): Token[] {
       continue;
     }
 
-    if (ch === '/' && i + 1 < text.length && WORD_START_PATTERN.test(text[i + 1])) {
+    if (
+      ch === '/' &&
+      (start === 0 || WHITESPACE_PATTERN.test(text[start - 1])) &&
+      i + 1 < text.length &&
+      WORD_START_PATTERN.test(text[i + 1])
+    ) {
       i += 2;
       while (i < text.length && WORD_PART_PATTERN.test(text[i])) {
         i += 1;
