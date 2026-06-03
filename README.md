@@ -187,17 +187,22 @@ gma2-vscode-extension/
     foldingProvider.ts        # Code folding for comment-delimited sections
     symbolProvider.ts         # Document outline (sections and variables)
     semanticTokenProvider.ts  # Variable declaration vs reference highlighting
+    definitionProvider.ts     # Go-to-Definition for $variable references
+    renameProvider.ts         # Rename a $variable and all its references
     keywordDocs.ts            # Keyword documentation database (304 entries)
     language/
       lexer.ts                # Tokenizer: text -> Token[] (with escape handling)
       lineParser.ts           # Line classifier: tokens -> LineType
       documentAnalyzer.ts     # Full-document analysis: sections, variables, hints
+      variableResolver.ts     # Variable lookup helpers (definition, occurrences)
       analysisCache.ts        # LRU cache for analysis results (20 entries)
       types.ts                # Shared types (Token, LineType, DocumentAnalysis)
   syntaxes/
     gma2.tmLanguage.json      # TextMate grammar for syntax highlighting
   snippets/
     gma2.json                 # 12 snippet templates for common patterns
+  scripts/
+    validate-keywords.ts      # Keyword data validation script
   test/
     unit/                     # Vitest unit tests (mocked vscode module)
     integration/              # Mocha tests against real VS Code instance
