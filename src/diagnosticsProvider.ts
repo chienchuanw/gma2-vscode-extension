@@ -266,6 +266,45 @@ function collectHintDiagnostics(document: vscode.TextDocument): vscode.Diagnosti
   );
 }
 
+export interface Gma2DiagnosticsConfig {
+  unknownKeywords: boolean;
+  undefinedVariables: boolean;
+  duplicateCues: boolean;
+}
+
+/**
+ * Assemble diagnostics for a document, honoring per-category toggles. Unclosed
+ * string hints are always included; the three categories the user can disable
+ * are gated by `config`.
+ */
+export function collectDiagnostics(
+  document: vscode.TextDocument,
+  config: Gma2DiagnosticsConfig
+): vscode.Diagnostic[] {
+  const diagnostics: vscode.Diagnostic[] = [...collectHintDiagnostics(document)];
+
+  if (config.unknownKeywords) {
+    diagnostics.push(...collectUnknownKeywordDiagnostics(document));
+  }
+  if (config.undefinedVariables) {
+    diagnostics.push(...collectUndefinedVariableDiagnostics(document));
+  }
+  if (config.duplicateCues) {
+    diagnostics.push(...collectDuplicateCueDiagnostics(document));
+  }
+
+  return diagnostics;
+}
+
+function readDiagnosticsConfig(): Gma2DiagnosticsConfig {
+  const config = vscode.workspace.getConfiguration('gma2');
+  return {
+    unknownKeywords: config.get<boolean>('diagnostics.unknownKeywords', true),
+    undefinedVariables: config.get<boolean>('diagnostics.undefinedVariables', true),
+    duplicateCues: config.get<boolean>('diagnostics.duplicateCues', true)
+  };
+}
+
 function updateDiagnostics(
   document: vscode.TextDocument,
   selector: vscode.DocumentSelector,
@@ -275,14 +314,7 @@ function updateDiagnostics(
     return;
   }
 
-  const diagnostics: vscode.Diagnostic[] = [
-    ...collectHintDiagnostics(document),
-    ...collectUnknownKeywordDiagnostics(document),
-    ...collectUndefinedVariableDiagnostics(document),
-    ...collectDuplicateCueDiagnostics(document)
-  ];
-
-  collection.set(document.uri, diagnostics);
+  collection.set(document.uri, collectDiagnostics(document, readDiagnosticsConfig()));
 }
 
 export function setupDiagnostics(
@@ -305,6 +337,14 @@ export function setupDiagnostics(
     }),
     vscode.workspace.onDidCloseTextDocument((document) => {
       collection.delete(document.uri);
+    }),
+    vscode.workspace.onDidChangeConfiguration((event) => {
+      if (!event.affectsConfiguration('gma2')) {
+        return;
+      }
+      for (const document of vscode.workspace.textDocuments) {
+        updateDiagnostics(document, selector, collection);
+      }
     })
   );
 }
