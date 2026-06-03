@@ -139,6 +139,18 @@ SetVar $sceneIndex = 1
 [$sceneIndex >= 1] Goto Cue $sceneIndex
 ```
 
+## Known Limitations
+
+**Analysis is per-file.** All variable tracking, diagnostics, document symbols, Go-to-Definition, and Rename operate on a single `.gma2` file at a time. The extension has no awareness of other files in your workspace.
+
+In practice this means:
+
+- If you declare a variable (`SetVar $showMode = 1`) in one file and reference `$showMode` in another, the second file will show a "variable is used but not declared in this file" notice -- the declaration in the other file is not seen.
+- Go-to-Definition and Rename only find declarations and references within the current file.
+- Duplicate `Store Cue` detection only compares cues within the same file.
+
+This is expected behavior, not a bug. Cross-file variable resolution is a potential future enhancement.
+
 ## Development
 
 ### Prerequisites
